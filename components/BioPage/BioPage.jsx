@@ -136,7 +136,7 @@ const BioPage = ({ membershipsData }) => {
   return (
     <div className="min-h-screen bg-white">
       {/* Header band */}
-      <div className="relative bg-brand-navy overflow-hidden pt-28 pb-12">
+      <div className="relative bg-brand-navy overflow-hidden pt-24 pb-12">
 
         {/* Decorative shapes */}
         <div className="pointer-events-none absolute -bottom-24 -right-24 h-[420px] w-[420px] rounded-full" style={{ background: "#1e2d3d" }} />
@@ -149,7 +149,7 @@ const BioPage = ({ membershipsData }) => {
           {/* Back to team */}
           <button
             onClick={() => navigate("/team")}
-            className="inline-flex items-center gap-1.5 text-sm text-white/60 hover:text-white transition-colors mb-8"
+            className="inline-flex items-center gap-1.5 text-sm text-white/80 hover:text-white transition-colors mb-8"
           >
             <ChevronLeft size={15} />
             Back to Team
@@ -159,7 +159,7 @@ const BioPage = ({ membershipsData }) => {
         {/* Profile header card */}
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
           <FadeIn>
-            <div className="flex flex-col sm:flex-row gap-8 items-end">
+            <div className="flex flex-col sm:flex-row gap-8 items-start">
               {/* Photo */}
               <div className="shrink-0">
                 <div className="h-56 w-44 sm:h-64 sm:w-52 rounded-xl overflow-hidden border-2 border-white/20 shadow-2xl">
