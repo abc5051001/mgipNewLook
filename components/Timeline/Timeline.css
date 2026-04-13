@@ -1,0 +1,66 @@
+/* Timeline.css */
+
+.timeline-container {
+    position: absolute;
+    max-width: 600px;
+    overflow: hidden;
+    top: 60%;
+    width: 100%;
+    min-height: 100%;
+  }
+  
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    height: 200px;
+  }
+  
+  .timeline-item {
+    font-size: 1.5rem;
+    font-family: "Sofia Sans", sans-serif;
+    font-weight: 400;
+    color: white;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0 0 40px;
+    opacity: 0; /* Start items as invisible */
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .timeline-item.visible {
+    opacity: 1; /* Fade-in visible items */
+  }
+  
+  @media (max-width: 768px) {
+    .timeline-container {
+        position: absolute;
+        width: 100%;
+        overflow: hidden;
+        top: 70%;
+        width: 100%;
+        max-width: 400px;
+      }
+      
+    .timeline {
+        display: flex;
+        flex-direction: column;
+        margin: 20px;
+        margin-left: 50px;
+        height: 200px;
+        margin-top: 0px;
+      }
+      
+    .timeline-item {
+      font-size: 1.25rem;
+      margin: 0px 0 0 0px;
+    }
+  } 
+
+  @media (max-height: 699px) {
+    .timeline-container {
+        display: none;
+      }
+  }
+  

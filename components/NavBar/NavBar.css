@@ -1,0 +1,197 @@
+.navbar {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 30px 60px; /* Adjusted padding for better spacing */
+  top: 0; /* Aligns the navbar to the top */
+  width: 100%; /* Ensures the navbar spans the full width of the viewport */
+  z-index: 1000; /* Ensures the navbar stays above other content */
+  transition: padding 0.3s ease, background-color 0.3s ease;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1); /* Slightly black line at the bottom */
+}
+
+/* Smaller navbar size after scrolling */
+.navbar-shrink {
+  padding: 20px 60px;
+  background-color: rgba(255, 255, 255);
+  border-color: #333;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Slightly black line at the bottom */
+}
+
+.navbar-title {
+  user-select: none;
+  position: relative;
+  text-decoration: none;
+  color: #457891;
+  transition: color 0.3s ease, transform 0.3s ease;
+  font-size: 28px;
+  overflow: hidden;
+  font-weight: 600;
+  line-height: 25px;
+  cursor: pointer;
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  margin-right: 4%; /* Increased margin for more separation */
+  padding: 0;
+}
+
+.navbar-links li {
+  padding: 0 50px; /* Increased padding between links */
+}
+
+.navbar-links li a {
+  position: relative;
+  text-decoration: none;
+  color: #457891;
+  transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effects and color */
+  font-size: 22px;
+  overflow: hidden;
+  font-weight: 600;
+  line-height: 40.22px;
+}
+
+.navbar-links li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -5px;
+  height: 2px;
+  background-color: #0080c0;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  transform-origin: left center;
+}
+
+.navbar-links li a:hover,
+.navbar-links li a:focus {
+  color: #333; /* Change color on hover */
+}
+
+.navbar-links li a:hover::after,
+.navbar-links li a:focus::after {
+  transform: scaleX(1);
+}
+
+.navbar-links li a.active::after {
+  transform: scaleX(1);
+}
+
+.navbar-links li a.active:hover::after {
+  transform: scaleX(
+    1
+  ); /* Keep the underline on the active link even on hover */
+}
+
+.navbar-links li a.active,
+.navbar-links li a.active:hover,
+.navbar-links li a.active:focus {
+  color: #577c8e; /* Active link color */
+}
+
+/* Responsive styles */
+.hamburger {
+  display: none; /* Hidden by default */
+  cursor: pointer;
+  font-size: 24px; /* Adjust based on your preference */
+  position: absolute;
+  right: 20px; /* Adjusted position to bring it slightly left */
+  background: transparent;
+  border: none;
+  color: #457891; /* Change color to ensure visibility against your navbar background */
+  z-index: 1010; /* Make sure it's above other content */
+}
+
+/* Styles to make the navbar links expandable for mobile */
+@media (max-width: 895px) {
+  .hamburger {
+    display: block; /* Show hamburger icon on smaller screens */
+    right: 10%; /* Adjusted for smaller screens */
+  }
+
+  .navbar {
+    padding: 20px 30px; /* Adjust padding for mobile screens */
+  }
+
+  .navbar-shrink {
+    padding: 10px 30px;
+    background-color: rgba(255, 255, 255, 0.95);
+  }
+
+  .navbar-title {
+    font-size: 20px; /* Make logo font smaller when hamburger is visible */
+  }
+
+  .navbar-links {
+    display: none; /* Hide the links initially */
+    position: fixed;
+    top: -15px;
+    left: 0;
+    right: 0;
+    background-color: rgba(
+      243,
+      243,
+      243,
+      0.9
+    ); /* Adjust the background to match your navbar */
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    padding-top: 60px; /* Add padding to top to avoid overlay with the hamburger icon */
+    width: 100%; /* Full width */
+    z-index: 1005; /* Ensure it appears above other content but below the hamburger */
+    transition: all 0.3s ease; /* Smooth transition */
+  }
+
+  .navbar-links.expanded {
+    display: flex; /* Show the links when hamburger is clicked */
+  }
+
+  .navbar-links li {
+    width: 100%; /* Full-width list items */
+    text-align: center; /* Center-align the links */
+    padding: 10px 0;
+  }
+
+  .navbar-links li a {
+    display: block; /* Make the links fill the li for easier click */
+    font-size: 18px; /* Adjust font size for mobile */
+  }
+}
+@media (min-width: 897px) and (max-width: 1101px) {
+  .navbar {
+    padding: 20px 30px; /* Reduce padding to create more space */
+  }
+
+  .navbar-title {
+    font-size: 24px; /* Slightly reduce the font size of the logo */
+  }
+
+  .navbar-links {
+    margin-right: 2%; /* Reduce the margin to provide more space */
+  }
+
+  .navbar-links li {
+    padding: 0 30px; /* Reduce padding between links */
+  }
+
+  .navbar-links li a {
+    font-size: 20px; /* Adjust font size of links */
+  }
+}
+
+/* Additional responsive styles for better alignment */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* Adjustments for tablets or smaller desktop screens */
+  .navbar-links li {
+    padding: 0 40px; /* More space between links for tablets */
+  }
+}
+
+/* More media queries can be added for larger screens */

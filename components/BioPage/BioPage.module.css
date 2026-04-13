@@ -1,0 +1,214 @@
+.bioFullPage {
+  padding: 50px 15px;
+  width: 70%; /* Set the width to 75% of the screen */
+  /* max-width: 1200px; Optional: Set a maximum width to prevent it from getting too large on very wide screens */
+  margin: 0 auto; /* Center the content */
+  padding-top: 150px;
+}
+
+.photoContainer {
+  flex: 0 0 350px; /* Ensure fixed size for the photo container */
+  max-width: 350px;
+  display: flex;
+  justify-content: center; /* Center the image within the container */
+  align-items: center;
+}
+
+.memberPhoto {
+  width: 250px; /* Fixed photo width */
+  height: auto; /* Maintain aspect ratio */
+  max-height: 100%; /* Prevents overflow */
+  object-fit: cover; /* Keep photo within bounds */
+  border-radius: 5%; /* Rounded corners */
+  margin: 0; /* Reset margin */
+}
+
+.bioContainer {
+  display: flex;
+  align-items: flex-start; /* Align content at the top */
+  gap: 0px; /* Adjust gap between photo and content */
+  flex-wrap: nowrap; /* Prevent wrapping on larger screens */
+}
+
+.contentContainer {
+  flex-grow: 1; /* Allow the content to take up remaining space */
+}
+
+.bioName {
+  font-family: "Playfair Display";
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 64px;
+  margin-bottom: 10px;
+  margin-top: 0px;
+}
+
+.bioTitle {
+  font-family: "Source Sans 3";
+  font-size: 36px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.header {
+  margin-bottom: 15px;
+}
+
+.bioCardTitle {
+  margin: 0 0 15px 0;
+  font-weight: normal;
+  color: #2f4157;
+  font-family: "Source Sans 3";
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 50px;
+}
+
+.headerContact {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+  gap: 60px;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+  font-size: 28px;
+  font-weight: 400;
+  color: #6c757d;
+  font-family: "Source Sans 3";
+}
+
+.icon {
+  font-size: 1rem;
+  margin-right: 6px;
+}
+
+.card {
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.cardContent {
+  font-family: "Source Sans 3";
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 15px;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+p {
+  margin-bottom: 10px;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+.membershipContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Adjust the spacing between buttons */
+}
+
+.membershipButton {
+  background-color: #577c8e; /* Button background color */
+  color: white;
+  padding: 16px 32px;
+  border-radius: 8px;
+  display: inline-block;
+  text-align: center;
+  font-size: 22px;
+  font-family: "Noto Sans";
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 2px;
+  position: relative; /* Ensure the tooltip aligns correctly */
+}
+
+.membershipButton:hover .tooltip {
+  display: block;
+}
+
+.tooltip {
+  display: none;
+  left: 0;
+  position: absolute;
+  bottom: 100%; /* Position above the button */
+  background-color: #577c8e; /* Same background color as the button */
+  color: white; /* Ensure text color is white */
+  padding: 16px; /* Match padding for consistent look */
+  border-radius: 8px; /* Match border-radius for consistent look */
+  white-space: normal;
+  z-index: 10;
+  width: 400px; /* Adjust width if needed */
+  text-align: left;
+  word-wrap: break-word;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+  margin-bottom: 10px; /* Add padding between the button and the tooltip */
+}
+.navigationButtons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 60px;
+  gap: 16px;
+}
+
+.navButton {
+  padding: 12px 20px;
+  font-size: 16px;
+  background-color: #75a2b8;
+  color: white;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  display: flex;
+}
+
+.navButton:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+.navButton:disabled:hover {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+.navButton:hover {
+  background-color: rgb(23, 56, 78);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+@media (max-width: 1400px) {
+  .tooltip {
+    display: none;
+  }
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .bioContainer {
+    flex-direction: column; /* Stacks the photo and content vertically on small screens */
+  }
+
+  .photoContainer {
+    margin-bottom: 20px; /* Adds spacing between the photo and content when stacked */
+  }
+
+  .memberPhoto {
+    margin: 0 auto; /* Center the photo */
+  }
+  .bioFullPage {
+    width: 100%;
+  }
+}

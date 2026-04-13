@@ -1,0 +1,142 @@
+.footer-container {
+  width: 100%;
+  background-color: #577c8e; /* Blue background color */
+  padding: 10px 0 30px 0;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  width: 100%;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 80%;
+  max-width: 1200px;
+  margin-bottom: 20px;
+}
+
+.link-parent {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  gap: 80px;
+}
+
+.footer-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.footer-section h4 {
+  margin-bottom: 10px;
+  font-family: "Source Sans 3";
+  font-weight: 500;
+  font-size: 23px;
+}
+
+.footer-section ul {
+  list-style-type: none;
+  padding: 0;
+}
+.getInTouch {
+  display: inline;
+}
+.footer-section li {
+  margin-bottom: 10px;
+}
+
+.footer-section a {
+  color: #fff;
+  text-decoration: none;
+  font-family: "Source Sans 3";
+  font-size: 18px;
+}
+.icon-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 65px;
+  height: 45px;
+  border-radius: 12px;
+  background-color: #2f4157; /* Matches Figma specs */
+  transition: background-color 0.3s ease;
+}
+
+.icon-button:hover {
+  background-color: #4c5b72;
+}
+.footer-section a:hover {
+  text-decoration: underline;
+}
+.footer-section h4 {
+  font-size: 20px;
+}
+.footer-credits {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  max-width: 1200px;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 0.875rem;
+}
+.footer-map {
+  width: 300px;
+  height: auto;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: transform 0.5s ease-in-out;
+}
+.footer-map:hover {
+  transform: scale(1.05);
+}
+.footer-title {
+  font-size: 32px;
+  font-weight: normal;
+  font-size: "Source Sans 3";
+  line-height: 1.1;
+  padding-bottom: 20px;
+}
+@media (max-width: 768px) {
+  .link-parent {
+    gap: 30px;
+  }
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-section {
+    margin-bottom: 20px;
+    align-items: flex-start !important;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .footer-section h4 {
+    margin-bottom: 10px !important;
+    text-align: left !important;
+  }
+
+  .footer-section ul {
+    text-align: left !important;
+    width: 100%;
+    margin-top: 10px !important;
+  }
+
+  .footer-section .contact-info div {
+    text-align: left !important;
+    display: block !important;
+  }
+
+  .footer-credits {
+    flex-direction: column;
+    align-items: center;
+  }
+}

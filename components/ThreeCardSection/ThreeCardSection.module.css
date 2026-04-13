@@ -1,0 +1,189 @@
+
+.threeCardSection {
+  max-width: 70%;
+  margin: 0 auto;
+  padding: 20px 0 100px 0;
+  position: relative;
+}
+
+.sectionTitle {
+  margin-bottom: 80px;
+  font-size: 45px;
+  text-align: center;
+  font-weight: 550;
+  line-height: 70.65px;
+  color: #2F4157;
+}
+
+.cardContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 45px;
+}
+
+.hidden {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.visible {
+  animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card {
+  background-color: #f7f9fc;
+  border-radius: 8px;
+  padding: 25px;
+  flex: 1;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: auto;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.iconWrapper {
+  margin-bottom: 32px;
+  padding: 20px;
+  border-radius: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+}
+
+.cardTitle {
+  margin-bottom: 32px;
+  margin-top: 0;
+  color: #36454F;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 42.23px;
+  text-align: left;
+}
+
+.cardDescription {
+  color: #36454F;
+  line-height: 30.17px;
+  text-align: left;
+  margin-bottom: 32px;
+  margin-top: 0;
+  flex-grow: 1;
+}
+
+.learnMore {
+  color: #2F4157;
+  text-decoration: underline;
+  font-weight: bold;
+  transition: color 0.3s ease;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 30.17px;
+  text-align: left;
+  align-self: flex-start;
+  padding-bottom: 32px;
+}
+
+.learnMore:hover {
+  color: #0056b3;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+.overlayCard {
+  background-color: white;
+  padding: 48px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 900px;
+  position: relative;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 48px;
+  cursor: pointer;
+}
+
+.cardDescription p  {
+    font-weight: 100;
+  margin-top: 20px;
+  color: #36454F;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+@keyframes colorChange {
+  0% {
+    background: linear-gradient(135deg, #D8E8E6 0%, #E5EAF0 100%);
+  }
+  50% {
+    background: linear-gradient(135deg, #D9E3E8 0%, #659af0 100%);
+  }
+  100% {
+    background: linear-gradient(135deg, #659af0 0%, #334e99 100%);
+  }
+}
+
+@media screen and (max-width: 1200px) {
+
+  .cardContainer {
+    flex-wrap: wrap;
+  }
+
+  .overlayCard {
+    overflow-y: auto;
+    padding: 40px;
+  }
+
+  .card {
+    flex-basis: calc(50% - 20px);
+    margin-bottom: 64px;
+  }
+}
+@media screen and (max-width: 620px) {
+    .threeCardSection{
+        max-width: 90%;
+    
+    }
+}

@@ -1,0 +1,159 @@
+/* Awards.css */
+
+@keyframes slideIn {
+    from {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  .background-image {
+    min-height: 150vh;
+    position: absolute;
+    top: 100px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../../pictures/blank_map.jpg');
+    background-repeat: no-repeat;
+    background-size: auto; /* or 'contain' based on your desired effect */
+    padding-top: 50px;
+    background-position: center 0px;
+    z-index: -1; /* Ensure it's behind the content */
+    opacity: 0.5;
+  }
+  
+  .awards-container {
+    position: relative; /* Needed for absolute positioning of the background div */
+    overflow: hidden; /* Ensures the background div is clipped to the container's bounds */
+
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .awards-Wrapper {
+    width: 100%;
+  }
+  
+  .awards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-row-gap: 2px; /* Set the grid row gap to create the horizontal line */
+    max-width: 1200px;
+    min-width: 1200px;
+    margin: 0 auto;
+    padding-top: 20px;
+  }
+  
+  .award-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+    padding-bottom: 20px;
+    transition: opacity 1s ease, transform 1s ease; /* Transition for animation */
+  }
+  
+  .award-card.hidden {
+    opacity: 0; /* Initial state - invisible */
+    transform: translateX(-100%); /* Initial state - off-screen */
+  }
+  
+  .award-card.slide-in {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .award-card:not(:nth-child(3n)) {
+    border-right: 2px solid #b8b8b8; /* Add a right border for the vertical lines, except for the last item in a row */
+  }
+  
+  .award-card:nth-child(n+4) {
+    border-top: 2px solid #b8b8b8; /* Add a top border to all items except those in the first row */
+  }
+  
+  .award-number {
+    font-size: 80px;
+    font-weight: bold;
+    color: transparent; /* Make the text color transparent */
+    -webkit-text-stroke: 2px rgb(36, 112, 140); /* Apply a 2px stroke */
+    transition: margin-right 2s;
+  }
+  
+  .award-description {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+  }
+  
+  .award-logo {
+    /* If logos are present in the design, add them here */
+  }
+  
+  @media (max-width: 1200px) {
+    .awards-grid {
+      max-width: auto;
+      min-width: 0px;
+    }
+    .background-image {
+      background-size: contain;
+    }
+  }
+  
+  @media (max-width: 660px) {
+    .awards-container {
+      padding-bottom: 100px;
+    }
+  
+    .awards-grid {
+      grid-template-columns: none;
+    }
+  
+    .award-number {
+      padding: 0;
+      font-size: 40px;
+    }
+  
+    .award-card {
+      animation: slideIn 1s ease forwards; /* Add slide-in animation */
+      opacity: 0;
+    }
+  
+    .award-card:nth-child(1) {
+      animation-delay: 0.3s;
+    }
+  
+    .award-card:nth-child(2) {
+      animation-delay: 0.5s;
+    }
+  
+    .award-card:nth-child(3) {
+      animation-delay: 0.7s;
+    }
+  
+    .award-card:nth-child(4) {
+      animation-delay: 0.9s;
+    }
+  
+    .award-card:nth-child(5) {
+      animation-delay: 1s;
+    }
+  
+    .award-card:nth-child(6) {
+      animation-delay: 1.2s;
+    }
+  
+    .award-card:not(:nth-child(3n)) {
+      border: none;
+    }
+  
+    .award-card:nth-child(n+4) {
+      border: none;
+    }
+  }
+  

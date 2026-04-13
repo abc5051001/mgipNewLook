@@ -1,0 +1,100 @@
+/* ContactForm.css */.contact-form-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 005%; /* Added padding for better alignment */
+}
+
+.contact-form {
+    width: 100%;
+    max-width: 800px; /* Set max width to match Figma design */
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem; /* Adjust gap between form elements for better spacing */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; /* Increased gap for better spacing */
+    width: 100%;
+}
+
+.form-label {
+    font-weight: 600;
+    color: #2F4157;  /* Dark text */
+    font-size: 30px; /* Adjusted to match Figma */
+    line-height: 32px; /* Adjusted to match Figma */
+    font-family: "Source Sans 3" sans-serif;  /* Font as per Figma */
+    padding-left: 2px; /* Slight padding for better alignment */
+}
+
+.form-control {
+    padding: 0.75rem1rem;
+    background: #ffffff;  /* White background */
+    border: 1px solid #ccc;
+    border-radius: 12px;  /* Rounded corners for the input boxes */
+    color: #51555D;  /* Dark text */
+    font-size: 20px; /* Adjust font size to match Figma */
+    font-family:"Source Sans 3";
+    padding-left: 10px;
+    height: 48px; /* Adjusted height for input boxes */
+}
+
+.form-control::placeholder {
+    color: #51555D;  /* Light grey placeholder text */
+}
+.form-control.message{
+    height:250px
+}
+.form-control.is-invalid {
+    border: 2px solid #ff0019;  /* Red border for validation errors */
+}
+select.form-control {
+    padding: 0.75rem30px0.75rem1rem; /* Adjust the padding-right value */background: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    color: #333;
+    font-size: 16px;
+    height: 48px;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,...'); /* Your custom arrow SVG data */
+    background-repeat: no-repeat;
+    background-position: right 10px center; /* Adjust this value to move the arrow left */background-size: 12px;
+}
+.form-group.full-width.form-control {
+    height: 550px; /* Make the message box larger */resize: vertical; /* Allow resizing of the message box */
+}
+.form-control.messageis-invalid{
+    height:200px;
+}
+.error-message {
+    color: #ff0019;  /* Red text for error messages */font-size: 14px;
+    margin-top: -0.5rem;
+}
+
+.btn-send {
+    padding: 0.75rem 5rem;
+    color: #fff;  /* White text */background-color: #2F4157;  /* Dark navy background */border: none;
+    border-radius: 12px;  /* Match button rounding with input boxes */cursor: pointer;
+    font-size: 18px; /* Larger font size for better readability */transition: background-color 0.3s ease;
+    width: 100%; /* Make button take full width */
+}
+
+.btn-send:hover {
+    background-color: #34495e;  /* Slightly darker navy on hover */
+}
+
+/* Responsiveness */@media (max-width: 768px) {
+
+    .form-label {
+        font-size: 18px; /* Adjust font size for smaller screens */line-height: 24px;
+    }
+    .form-control {
+        font-size: 14px;
+        height: 40px; /* Adjust input height for smaller screens */
+    }
+    .btn-send {
+        font-size: 16px;
+    }
+}

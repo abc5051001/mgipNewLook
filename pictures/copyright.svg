@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-stone-600" width="80" height="24" viewBox="0 0 80 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Circle with reduced stroke width -->
+    <path stroke="none" d="M0 0h24v24H0z"/>
+    <circle cx="12" cy="12" r="9" stroke-width="1.5"/>
+    
+    <!-- Copyright text without stroke (only fill) -->
+    <text x="26" y="16" font-family="Switzer, sans-serif" font-size="12" stroke-width="0.5" fill="currentColor">Copyright</text>
+    
+    <!-- Path inside the circle with the same stroke width as the circle -->
+    <path d="M14.5 9a3.5 4 0 1 0 0 6" stroke-width="1.5"/>
+</svg>

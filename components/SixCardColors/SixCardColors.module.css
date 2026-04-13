@@ -1,0 +1,141 @@
+.sixCardColors {
+    text-align: center;
+    padding-bottom: 80px;
+    width: 70%;
+    background-color: white;
+    margin: auto;
+    margin-top: 80px;
+    margin-bottom: 0;
+
+  }
+  
+  .gridContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-radius: 25px;
+    overflow: hidden;
+  }
+  
+  .gridItem {
+    padding: 50px 25px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f7f9fc; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative; 
+  }
+  
+  .gridItem:hover {
+    transform: scale(1.05); /* Zoom in slightly on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhance the shadow */
+  }
+  
+  .gridItem h3 {
+    margin-bottom: 15px; /* Increased space between title and next element */
+    margin-top: 0;
+    padding-top: 35px;
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 40px;
+  }
+  
+  .gridItem p {
+    margin-top: 20px; /* Added space between text and paragraph */
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 30px;
+    text-align: center;
+  }
+  
+  .iconWrapper {
+    margin-bottom: 25px; /* Increased space between icon and title */
+  }
+  
+  /* Tooltip Styles */
+  .tooltip {
+    display: block;
+    position:absolute;
+    bottom:100%;
+    background-color: #577C8E; 
+    color: white; /* Ensure text color is white */
+    padding: 16px;
+    border-radius: 8px;
+    white-space: normal;
+    z-index: 10;
+    width: 300px; /* Adjust width if needed */
+    font-size: 20px;
+    text-align: left;
+    word-wrap: break-word;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .tooltip ul li {
+    font-size: 18px; 
+    margin-bottom: 10px;
+    line-height: 1.5;
+    color: white;
+  }
+  
+  /* Responsive Styles */
+  @media screen and (max-width: 1200px) {
+    .gridContainer {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .gridItem h3 {
+      font-size: 25px;
+      line-height: 35px;
+    }
+    .gridItem p {
+      font-size: 20px;
+      line-height: 25px;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .sixCardColors {
+      width: 90%;
+    }
+    .gridContainer {
+      grid-template-columns: 1fr;
+    }
+    .gridItem {
+      padding: 35px 20px;
+    }
+    .gridItem h3 {
+      font-size: 25px;
+      line-height: 30px;
+      padding-top: 25px;
+    }
+    .gridItem p {
+      font-size: 20px;
+      line-height: 25px;
+    }
+    .sixCardTitle h2 {
+      font-size: 35px;
+      line-height: 45px;
+      margin-bottom: 65px;
+      margin-top: 65px;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .gridItem h3 {
+      font-size: 20px;
+      line-height: 25px;
+    }
+    .gridItem p {
+      font-size: 15px;
+      line-height: 20px;
+    }
+    .sixCardTitle h2 {
+      font-size: 30px;
+      line-height: 40px;
+      margin-bottom: 70px;
+      margin-top: 50px;
+    }
+  }
+  

@@ -1,0 +1,33 @@
+
+.sticky-box {
+    position: sticky;
+    top: 30%; 
+    left: 40%;
+    padding: 30px;
+    background-color: #4382b6; 
+    color: white;
+    border-radius: 8px;
+    max-width: 650px; 
+    z-index: 10; 
+  }
+  .sticky-description p{
+    font-size: 20px;
+  }
+  .sticky-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .sticky-description {
+    font-size: 1em;
+  }
+  
+  @media (max-width: 768px) {
+    .sticky-box {
+      max-width: 100%; 
+      position: static; 
+      top: unset; 
+    }
+  }
+  

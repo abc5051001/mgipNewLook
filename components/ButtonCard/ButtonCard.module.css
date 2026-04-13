@@ -1,0 +1,100 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.buttonCard {
+  padding: 0px 150px;
+  opacity: 0;
+  transition: opacity 1s ease-out, transform 1s ease-out;
+  will-change: opacity, transform;
+}
+.buttonCard.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+  animation: fadeIn 1.5s ease-out;
+}
+.description {
+  color: #36454f;
+  font-size: 24px;
+  font-weight: 400;
+  text-align: left;
+  padding-bottom: 20px;
+}
+
+.cardButton {
+  padding: 16px 43px; /* Adjusted padding for smaller screens */
+  background-color: #577c8e;
+  border: none;
+  border-radius: 15px;
+  color: white;
+  cursor: pointer;
+  font-size: 20px; /* Adjusted font size for smaller screens */
+  font-weight: 600;
+  line-height: 22px;
+  text-align: center;
+}
+
+.buttonTitle {
+  color: #2f4157;
+  font-size: 45px; /* Adjusted font size for smaller screens */
+  font-weight: 550;
+  line-height: 70.65px; /* Adjusted line height for smaller screens */
+  text-align: left;
+  padding-bottom: 20px; /* Reduced padding for smaller screens */
+}
+
+.cardButton:hover {
+  background-color: #5a7182;
+}
+
+/* Media queries for responsiveness */
+
+@media (min-width: 1080px) {
+  .buttonCard {
+    padding: 170px 300px; /* Original padding for larger screens */
+  }
+  .description {
+    font-size: 30px; /* Original font size for larger screens */
+    padding-bottom: 30px;
+  }
+
+  .cardButton {
+    padding: 16px 45px; /* Original padding for larger screens */
+    font-size: 18px; /* Original font size for larger screens */
+    line-height: 24px;
+  }
+
+  .buttonTitle {
+    line-height: 63.98px;
+    padding-bottom: 30px;
+  }
+}
+
+/* Mobile view (max-width: 767px) */
+@media (max-width: 1079px) {
+  .buttonCard {
+    padding: 150px 30px 150px 30px; /* Some padding for mobile screens */
+  }
+
+  .description {
+    font-size: 26px; /* Adjust font size for mobile */
+    padding-bottom: 15px;
+  }
+
+  .cardButton {
+    padding: 20px 40px; /* Adjust padding for mobile */
+    line-height: 20px;
+    font-size: 20px; /* Adjust font size for mobile */
+  }
+
+  .buttonTitle {
+    line-height: 42px;
+    padding-bottom: 15px;
+  }
+}
