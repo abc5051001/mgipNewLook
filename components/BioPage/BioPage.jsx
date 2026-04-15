@@ -5,7 +5,7 @@ import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import { Separator } from "../ui/separator";
 import { FadeIn } from "../FadeIn";
-import { teamMembers } from "../../teamMembers_updated";
+import { teamMembers } from "../../lib/team";
 import { cn } from "../../lib/utils";
 
 /* ─── Section icon mapping ───────────────────────────── */

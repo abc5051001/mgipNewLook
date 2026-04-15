@@ -6,7 +6,7 @@ import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import Contact from "./components/Contact/Contact";
-import { teamMembers } from "./teamMembers_updated";
+import { teamMembers } from "./lib/team";
 import { Careers } from "./components/Careers/Careers";
 import membershipsData from "./membershipMasterList";
 import { Disclaimer } from "./components/Disclaimer/Disclaimer";
