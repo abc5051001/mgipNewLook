@@ -5,7 +5,7 @@ author: "Testing "
 tags:
   - Announcements
   - Intellectual Property
-thumbnail: /uploads/doggo.jpg
+thumbnail: ""
 summary: We are excited to launch our new blog, where we will share updates,
   insights, and news on patents, trademarks, and intellectual property law.
 ---
