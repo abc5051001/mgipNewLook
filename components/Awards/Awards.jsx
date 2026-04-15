@@ -28,28 +28,22 @@ const Awards = () => {
       (entries, obs) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            console.log('awards-Wrapper is visible');
             cardRefs.current.forEach(card => {
               if (card) {
-                console.log('Adding slide-in class to', card);
                 card.classList.remove('hidden');
                 card.classList.add('slide-in');
               }
             });
             obs.unobserve(entry.target); // Stop observing after the wrapper is visible
-          } else {
-            console.log('awards-Wrapper is not visible');
           }
         });
       },
       { threshold: 0.5 } // Triggers when 50% of the wrapper is visible
     );
 
-    console.log('Observing wrapper:', wrapperRef.current);
     wrapperObserver.observe(wrapperRef.current);
 
     return () => {
-      console.log('Disconnecting observer');
       wrapperObserver.disconnect();
     };
   }, []);

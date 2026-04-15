@@ -36,8 +36,6 @@ function GoogleMapComp() {
       }, (result, status) => {
         if (status === window.google.maps.DirectionsStatus.OK) {
           setDirectionsResponse(result);
-        } else {
-          console.error(`error fetching directions ${status}`);
         }
       });
     }

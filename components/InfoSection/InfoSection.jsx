@@ -287,7 +287,7 @@ export default function InfoSection() {
             <div className="grid md:grid-cols-3 gap-8">
               {services.map((svc, i) => (
                 <FadeIn key={i}>
-                  <Card className="group h-full flex flex-col hover:shadow-lg transition-shadow duration-300 border-border/60">
+                  <Card className="group h-full flex flex-col hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-border/60 cursor-pointer">
                     <CardContent className="p-8 flex flex-col h-full">
                       <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-brand-navy/5">
                         <svc.icon className="h-7 w-7 text-brand-teal" />

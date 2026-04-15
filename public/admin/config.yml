@@ -1,0 +1,94 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Where uploaded images go (relative to project root)
+media_folder: "public/uploads"
+# How the CMS references them in content files
+public_folder: "/uploads"
+
+# Show a live preview link in the editor (optional, remove if not needed)
+# site_url: https://mg-ip.com
+
+collections:
+  # ── Blog Posts ──────────────────────────────────────────────────────────
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "content/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Author", name: "author", widget: "string" }
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        required: false
+      - label: "Thumbnail"
+        name: "thumbnail"
+        widget: "image"
+        required: false
+      - label: "Summary"
+        name: "summary"
+        widget: "text"
+        required: false
+        hint: "Short description shown on the blog listing page."
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  # ── Team Members ─────────────────────────────────────────────────────────
+  - name: "team"
+    label: "Team Members"
+    folder: "content/team"
+    create: true
+    slug: "{{fields.id}}"
+    identifier_field: "name"
+    fields:
+      - { label: "ID / Slug", name: "id", widget: "string", hint: "Short unique identifier, e.g. 'Ken' or 'Martin'. Used in the URL." }
+      - { label: "Full Name", name: "name", widget: "string" }
+      - { label: "First Name", name: "firstName", widget: "string" }
+      - { label: "Middle Name", name: "middleName", widget: "string", required: false }
+      - { label: "Last Name", name: "lastName", widget: "string" }
+      - { label: "Email", name: "email", widget: "string", required: false }
+      - { label: "Phone", name: "phone", widget: "string", required: false }
+      - label: "Title / Role"
+        name: "title"
+        widget: "select"
+        options:
+          - "PRINCIPAL SHAREHOLDER"
+          - "PRINCIPAL"
+          - "SENIOR COUNSEL"
+          - "OF COUNSEL"
+          - "ASSOCIATE"
+          - "PATENT AGENT"
+          - "TECHNICAL ADVISOR"
+          - "INTELLECTUAL PROPERTY ADVISOR"
+          - "HR - OFFICE MANAGER"
+          - "ACCOUNTING MANAGER"
+      - { label: "Photo", name: "photo", widget: "image" }
+      - label: "Practice Areas"
+        name: "field"
+        widget: "list"
+        required: false
+      - label: "Memberships"
+        name: "memberships"
+        widget: "list"
+        required: false
+        hint: "e.g. INTA, ABA, FICPI, VPP, AIPPI, ASIPI, AIPLA"
+      - label: "Bar Admissions"
+        name: "bar"
+        widget: "list"
+        required: false
+      - label: "Education"
+        name: "education"
+        widget: "list"
+        required: false
+      - label: "Experience / Bio"
+        name: "experience"
+        widget: "list"
+        field: { label: "Paragraph", name: "paragraph", widget: "text" }
+        required: false
+      - label: "Languages"
+        name: "Languages"
+        widget: "list"
+        required: false
