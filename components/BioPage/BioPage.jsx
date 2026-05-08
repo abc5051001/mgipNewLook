@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Helmet } from "react-helmet-async";
 import { useParams, useLocation, useNavigate, Navigate } from "react-router-dom";
 import { Mail, Phone, ChevronLeft, ChevronRight, GraduationCap, Scale, Users, Briefcase } from "lucide-react";
 import { Badge } from "../ui/badge";
@@ -159,8 +160,34 @@ const BioPage = ({ membershipsData }) => {
 
   let sectionIndex = 0;
 
+  const titleStr = member.title ? toTitleCase(member.title) : "";
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: member.name,
+    jobTitle: titleStr,
+    url: `https://mg-ip.com/${member.id}`,
+    image: member.photo,
+    email: member.email,
+    telephone: member.phone,
+    worksFor: {
+      "@type": "LegalService",
+      name: "Muncy, Geissler, Olds & Lowe, P.C.",
+      url: "https://mg-ip.com",
+    },
+  };
+
   return (
     <div className="min-h-screen bg-white">
+      <Helmet>
+        <title>{member.name} — {titleStr} | Muncy, Geissler, Olds & Lowe, P.C.</title>
+        <meta name="description" content={`Learn about ${member.name}, ${titleStr} at Muncy, Geissler, Olds & Lowe, P.C., an intellectual property law firm in Alexandria, VA.`} />
+        <meta property="og:title" content={`${member.name} | Muncy, Geissler, Olds & Lowe, P.C.`} />
+        <meta property="og:description" content={`${member.name} is a ${titleStr} at Muncy, Geissler, Olds & Lowe, P.C.`} />
+        <meta property="og:image" content={member.photo} />
+        <link rel="canonical" href={`https://mg-ip.com/${member.id}`} />
+        <script type="application/ld+json">{JSON.stringify(personSchema)}</script>
+      </Helmet>
       {/* Header band */}
       <div className="relative bg-brand-navy overflow-hidden pt-24 pb-12">
 

@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { FadeIn } from "../FadeIn";
 import { ShieldAlert } from "lucide-react";
@@ -12,6 +13,12 @@ const clauses = [
 export function Disclaimer() {
   return (
     <div className="min-h-screen bg-white">
+      <Helmet>
+        <title>Disclaimer | Muncy, Geissler, Olds & Lowe, P.C.</title>
+        <meta name="description" content="Legal disclaimer for the Muncy, Geissler, Olds & Lowe, P.C. website. Use of this site does not establish an attorney-client relationship." />
+        <meta name="robots" content="noindex, follow" />
+        <link rel="canonical" href="https://mg-ip.com/disclaimer" />
+      </Helmet>
       {/* Header */}
       <div className="bg-brand-navy pt-28 pb-16">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">

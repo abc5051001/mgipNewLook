@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import ContactForm from "./ContactForm";
 import { FadeIn } from "../FadeIn";
 import { MapPin, Phone, Mail, ExternalLink } from "lucide-react";
@@ -35,6 +36,13 @@ const contactDetails = [
 export default function Contact() {
   return (
     <div className="min-h-screen bg-white">
+      <Helmet>
+        <title>Contact Us | Muncy, Geissler, Olds & Lowe, P.C.</title>
+        <meta name="description" content="Contact Muncy, Geissler, Olds & Lowe, P.C. Our IP law office is located at 125 S Royal St, Alexandria, VA 22314. Call +1 (703) 621-7140 or email mailroom@mg-ip.com." />
+        <meta property="og:title" content="Contact Us | Muncy, Geissler, Olds & Lowe, P.C." />
+        <meta property="og:description" content="Reach out to our IP law firm in Alexandria, VA. Phone, email, and office address available." />
+        <link rel="canonical" href="https://mg-ip.com/contact" />
+      </Helmet>
       {/* Header */}
       <PageHero
         eyebrow="Get In Touch"

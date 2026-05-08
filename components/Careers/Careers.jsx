@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { FadeIn } from "../FadeIn";
 import { Button } from "../ui/button";
 import PageHero from "../ui/PageHero";
@@ -14,6 +15,13 @@ const perks = [
 export function Careers() {
   return (
     <div className="min-h-screen bg-white">
+      <Helmet>
+        <title>Careers | Muncy, Geissler, Olds & Lowe, P.C.</title>
+        <meta name="description" content="Explore career opportunities at Muncy, Geissler, Olds & Lowe, P.C. We welcome attorneys, patent agents, and technical professionals passionate about intellectual property law." />
+        <meta property="og:title" content="Careers | Muncy, Geissler, Olds & Lowe, P.C." />
+        <meta property="og:description" content="Join our team of IP professionals in Alexandria, VA. We're looking for attorneys, patent agents, and technical advisors." />
+        <link rel="canonical" href="https://mg-ip.com/careers" />
+      </Helmet>
       {/* Header */}
       <PageHero
         eyebrow="Join Our Team"

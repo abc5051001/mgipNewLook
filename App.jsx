@@ -11,12 +11,14 @@ import { Careers } from "./components/Careers/Careers";
 import membershipsData from "./membershipMasterList";
 import { Disclaimer } from "./components/Disclaimer/Disclaimer";
 import NotFound from "./components/NotFound/NotFound";
+import { HelmetProvider } from "react-helmet-async";
 // import BlogList from "./components/Blog/BlogList";
 // import BlogPost from "./components/Blog/BlogPost";
 import "./index.css";
 
 function App() {
   return (
+    <HelmetProvider>
     <Router>
       <ScrollToTop />
       <div className="flex flex-col min-h-screen">
@@ -41,6 +43,7 @@ function App() {
         <Footer />
       </div>
     </Router>
+    </HelmetProvider>
   );
 }
 

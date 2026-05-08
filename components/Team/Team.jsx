@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { Search, X, ChevronDown } from "lucide-react";
 import { cn } from "../../lib/utils";
@@ -179,6 +180,13 @@ export const Team = ({ members }) => {
 
   return (
     <div className="min-h-screen bg-white">
+      <Helmet>
+        <title>Our Team | Muncy, Geissler, Olds & Lowe, P.C.</title>
+        <meta name="description" content="Meet the attorneys, patent agents, and technical advisors at Muncy, Geissler, Olds & Lowe, P.C. — a leading intellectual property law firm in Alexandria, VA." />
+        <meta property="og:title" content="Our Team | Muncy, Geissler, Olds & Lowe, P.C." />
+        <meta property="og:description" content="Meet our team of IP attorneys, patent agents, and technical advisors specializing in Patent, Trademark, and Copyright law." />
+        <link rel="canonical" href="https://mg-ip.com/team" />
+      </Helmet>
       <PageHero
         eyebrow="Our Professionals"
         title="Meet the Team"
