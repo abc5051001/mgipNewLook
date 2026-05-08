@@ -9,7 +9,7 @@ function GoogleMapComp() {
 
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
-    googleMapsApiKey: "AIzaSyBkUqTWrqUzv16mdBfOzNvAXAUs9YdCSso", // Replace with your actual API key
+    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
     libraries: ['places']
   });
   const center = {

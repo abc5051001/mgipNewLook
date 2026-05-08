@@ -12,25 +12,25 @@ export default function Hero({ onLearnMoreClick }) {
         style={{ backgroundImage: `url(${bgImage})` }}
       />
       {/* Dark gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/20 to-black/35" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/25 to-black/35" />
 
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-5xl px-6 lg:px-8 text-center">
         <FadeIn>
           {/* Eyebrow */}
-          <p className="mb-6 font-display text-base font-semibold text-white/80">
+          <p className="mb-6 font-display text-base font-semibold text-white/85">
             Intellectual Property Law · Washington, D.C. Metro Area
           </p>
 
           {/* Firm name */}
-          <h1 className="font-display text-5xl font-medium tracking-tight text-white [text-wrap:balance] sm:text-6xl lg:text-7xl">
+          <h1 className="font-display text-5xl font-semibold tracking-tight text-white [text-wrap:balance] sm:text-6xl lg:text-7xl">
             Muncy, Geissler,
             <br />
             Olds &amp; Lowe, P.C.
           </h1>
 
           {/* Tagline */}
-          <p className="mt-8 mx-auto max-w-2xl text-xl text-white/75 leading-relaxed font-light">
+          <p className="mt-8 mx-auto max-w-2xl text-xl text-white/85 leading-relaxed font-base">
             An Intellectual Property Firm in the Washington, D.C. Metro Area, specializing in Engineering, Science, and Legal Expertise.
           </p>
 
