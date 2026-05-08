@@ -11,8 +11,8 @@ import { Careers } from "./components/Careers/Careers";
 import membershipsData from "./membershipMasterList";
 import { Disclaimer } from "./components/Disclaimer/Disclaimer";
 import NotFound from "./components/NotFound/NotFound";
-import BlogList from "./components/Blog/BlogList";
-import BlogPost from "./components/Blog/BlogPost";
+// import BlogList from "./components/Blog/BlogList";
+// import BlogPost from "./components/Blog/BlogPost";
 import "./index.css";
 
 function App() {
@@ -31,8 +31,8 @@ function App() {
               path="/:id"
               element={<BioPage membershipsData={membershipsData} />}
             />
-            <Route path="/blog" element={<BlogList />} />
-            <Route path="/blog/:slug" element={<BlogPost />} />
+            {/* <Route path="/blog" element={<BlogList />} /> */}
+            {/* <Route path="/blog/:slug" element={<BlogPost />} /> */}
             <Route path="/disclaimer" element={<Disclaimer />} />
             <Route path="/notfound" element={<NotFound />} />
             <Route path="*" element={<NotFound />} />

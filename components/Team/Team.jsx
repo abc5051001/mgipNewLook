@@ -138,6 +138,7 @@ export const Team = ({ members }) => {
   const [titleFilter, setTitleFilter] = useState("All");
   const [membershipFilter, setMembershipFilter] = useState("All");
   const [alphaOpen, setAlphaOpen] = useState(false);
+  const [filtersOpen, setFiltersOpen] = useState(false);
 
   const filtered = members.filter((m) => {
     // Letter filter
@@ -214,8 +215,8 @@ export const Team = ({ members }) => {
               )}
             </div>
 
-            {/* Filter selects */}
-            <div className="flex gap-2 flex-wrap">
+            {/* Filter selects — always visible on sm+, collapsible on mobile */}
+            <div className={cn("flex gap-2 flex-wrap", "hidden sm:flex", filtersOpen && "!flex")}>
               <FilterSelect
                 value={titleFilter}
                 onChange={setTitleFilter}
@@ -244,24 +245,42 @@ export const Team = ({ members }) => {
             </span>
           </div>
 
-          {/* Alphabet nav */}
-          {/* Mobile toggle */}
-          <button
-            type="button"
-            onClick={() => setAlphaOpen((o) => !o)}
-            className={cn(
-              "sm:hidden mt-3 inline-flex items-center gap-2 h-9 px-4 rounded-full border text-sm font-medium transition-colors",
-              activeLetter
-                ? "border-brand-navy bg-brand-navy text-white"
-                : "border-border text-muted-foreground hover:border-brand-navy/40 hover:text-brand-navy"
-            )}
-          >
-            {activeLetter ? `Letter: ${activeLetter}` : "A–Z Filter"}
-            <ChevronDown
-              size={13}
-              className={cn("transition-transform duration-200", alphaOpen && "rotate-180")}
-            />
-          </button>
+          {/* Mobile toggle buttons */}
+          <div className="sm:hidden flex gap-2 mt-3">
+            <button
+              type="button"
+              onClick={() => setAlphaOpen((o) => !o)}
+              className={cn(
+                "inline-flex items-center gap-2 h-9 px-4 rounded-full border text-sm font-medium transition-colors",
+                activeLetter
+                  ? "border-brand-navy bg-brand-navy text-white"
+                  : "border-border text-muted-foreground hover:border-brand-navy/40 hover:text-brand-navy"
+              )}
+            >
+              {activeLetter ? `Letter: ${activeLetter}` : "A–Z Filter"}
+              <ChevronDown
+                size={13}
+                className={cn("transition-transform duration-200", alphaOpen && "rotate-180")}
+              />
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setFiltersOpen((o) => !o)}
+              className={cn(
+                "inline-flex items-center gap-2 h-9 px-4 rounded-full border text-sm font-medium transition-colors",
+                (titleFilter !== "All" || membershipFilter !== "All")
+                  ? "border-brand-navy bg-brand-navy text-white"
+                  : "border-border text-muted-foreground hover:border-brand-navy/40 hover:text-brand-navy"
+              )}
+            >
+              {titleFilter !== "All" || membershipFilter !== "All" ? "Filters active" : "Title & Membership"}
+              <ChevronDown
+                size={13}
+                className={cn("transition-transform duration-200", filtersOpen && "rotate-180")}
+              />
+            </button>
+          </div>
 
           <div className={cn(
             "flex flex-wrap gap-0.5",

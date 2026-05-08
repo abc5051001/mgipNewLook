@@ -27,29 +27,29 @@ export function Disclaimer() {
       </div>
 
       {/* Body */}
-      <div className="mx-auto max-w-3xl px-6 lg:px-8 py-16">
+      <div className="mx-auto max-w-4xl px-6 lg:px-8 py-16">
         <FadeIn>
-          <div className="rounded-2xl border border-border bg-white shadow-sm p-8">
-            <div className="flex items-center gap-3 mb-8">
-              <div className="h-10 w-10 rounded-xl bg-brand-navy/5 flex items-center justify-center">
-                <ShieldAlert className="h-5 w-5 text-brand-navy" />
+          <div className="rounded-2xl border border-border bg-white shadow-sm p-10">
+            <div className="flex items-center gap-4 mb-10">
+              <div className="h-12 w-12 rounded-xl bg-brand-navy/5 flex items-center justify-center shrink-0">
+                <ShieldAlert className="h-6 w-6 text-brand-navy" />
               </div>
               <div>
-                <h2 className="font-semibold text-brand-navy">Website Disclaimer</h2>
-                <p className="text-xs text-muted-foreground">
+                <h2 className="font-display text-xl font-semibold text-brand-navy">Website Disclaimer</h2>
+                <p className="text-sm text-muted-foreground mt-0.5">
                   Please read carefully before using this website.
                 </p>
               </div>
             </div>
 
-            <div className="space-y-5">
+            <div className="space-y-6">
               {clauses.map((text, i) => (
-                <p key={i} className="text-sm text-muted-foreground leading-relaxed">
+                <p key={i} className="text-base text-muted-foreground leading-relaxed">
                   {text}
                 </p>
               ))}
 
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-base text-muted-foreground leading-relaxed">
                 <Link
                   to="/ScottT"
                   className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-teal transition-colors"

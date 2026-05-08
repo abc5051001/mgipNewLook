@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { cn } from "../../lib/utils";
 
 const navLinks = [
   { label: "About", to: "/" },
   { label: "Team", to: "/team" },
-  { label: "Blog", to: "/blog" },
   { label: "Careers", to: "/careers" },
   { label: "Contact Us", to: "/contact" },
 ];
@@ -121,55 +121,65 @@ export const NavBar = () => {
       </header>
 
       {/* Mobile backdrop */}
-      {mobileOpen && (
-        <div
-          className="fixed inset-0 z-40 bg-black/20 md:hidden"
-          onClick={() => setMobileOpen(false)}
-        />
-      )}
-
-      {/* Mobile drawer */}
-      <div
-        className={cn(
-          "fixed top-0 right-0 z-50 h-full w-72 bg-white shadow-2xl md:hidden",
-          "transform transition-transform duration-300",
-          mobileOpen ? "translate-x-0" : "translate-x-full"
-        )}
-      >
-        <div className="flex items-center justify-between px-6 py-5 border-b border-border">
-          <span className="text-sm font-bold text-brand-navy uppercase tracking-wide">Menu</span>
-          <button
-            className="p-1.5 rounded-md text-muted-foreground hover:text-brand-navy hover:bg-muted transition-colors"
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            key="backdrop"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-40 bg-black/20 md:hidden"
             onClick={() => setMobileOpen(false)}
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Mobile floating card */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            key="mobile-menu"
+            initial={{ opacity: 0, height: 0, y: -8 }}
+            animate={{ opacity: 1, height: "auto", y: 0 }}
+            exit={{ opacity: 0, height: 0, y: -8 }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed left-4 right-4 z-50 md:hidden bg-white rounded-2xl shadow-2xl overflow-hidden"
+            style={{ top: scrolled ? "64px" : "80px" }}
           >
-            <X size={20} />
-          </button>
-        </div>
-        <nav className="flex flex-col p-4 gap-1">
-          {navLinks.map(({ label, to }) => {
-            const active =
-              to === "/" ? location.pathname === "/" : location.pathname.startsWith(to);
-            return (
-              <Link
-                key={to}
-                to={to}
-                className={cn(
-                  "px-4 py-3 rounded-lg text-base font-medium transition-colors",
-                  active
-                    ? "bg-muted text-brand-navy"
-                    : "text-muted-foreground hover:bg-muted hover:text-brand-navy"
-                )}
-              >
-                {label}
-              </Link>
-            );
-          })}
-        </nav>
-        <div className="absolute bottom-6 left-6 right-6 space-y-1">
-          <p className="text-xs text-muted-foreground">+1 (703) 621-7140</p>
-          <p className="text-xs text-muted-foreground">mailroom@mg-ip.com</p>
-        </div>
-      </div>
+            <div className="px-6 py-6 flex flex-col gap-1">
+              {navLinks.map(({ label, to }, i) => {
+                const active =
+                  to === "/" ? location.pathname === "/" : location.pathname.startsWith(to);
+                return (
+                  <motion.div
+                    key={to}
+                    initial={{ opacity: 0, x: -8 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -8 }}
+                    transition={{ duration: 0.2, delay: i * 0.04, ease: [0.16, 1, 0.3, 1] }}
+                  >
+                    <Link
+                      to={to}
+                      onClick={() => setMobileOpen(false)}
+                      className={cn(
+                        "block py-4 text-sm font-semibold tracking-widest uppercase transition-colors border-b border-black/8",
+                        active ? "text-brand-navy" : "text-black/50 hover:text-brand-navy"
+                      )}
+                    >
+                      {label}
+                    </Link>
+                  </motion.div>
+                );
+              })}
+              <div className="pt-5 space-y-1">
+                <p className="text-xs text-muted-foreground">+1 (703) 621-7140</p>
+                <p className="text-xs text-muted-foreground">mailroom@mg-ip.com</p>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };
