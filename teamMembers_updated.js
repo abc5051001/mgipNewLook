@@ -44,7 +44,7 @@ import matthew from './pictures/matthew.jpg';
 import stephenBurr from './pictures/StephenBurr.jpg';
 export const teamMembers = [
   {
-    id: 'Ken',
+    id: 'Joe.M',
     name: 'Joe M. (Ken) Muncy',
     firstName: 'Joe',
     middleName: 'M. (Ken)',
@@ -77,7 +77,7 @@ export const teamMembers = [
     ],
   },
   {
-    id: 'Martin',
+    id: 'Martin.G',
     name: 'Martin R. Geissler',
     firstName: 'Martin',
     middleName: 'R.',
@@ -107,7 +107,7 @@ export const teamMembers = [
     Languages: ['Fluent in German'],
   },
   {
-    id: 'Mark',
+    id: 'Mark.O',
     name: 'Mark E. Olds',
     firstName: 'Mark',
     middleName: 'E.',
@@ -137,7 +137,7 @@ export const teamMembers = [
     ],
   },
   {
-    id: 'Scott',
+    id: 'Scott.L',
     name: 'Scott L. Lowe',
     firstName: 'Scott',
     middleName: 'L.',
@@ -167,7 +167,7 @@ export const teamMembers = [
     ],
   },
   {
-    id: 'John',
+    id: 'John.C',
     name: 'John L. Ciccozzi',
     firstName: 'John',
     middleName: 'L.',
@@ -198,7 +198,7 @@ export const teamMembers = [
     Languages: ['Fluent in Italian'],
   },
   {
-    id: 'Daniel',
+    id: 'Daniel.P',
     name: 'Daniel Podhajny',
     firstName: 'Daniel',
     middleName: '',
@@ -240,7 +240,7 @@ export const teamMembers = [
     ],
   },
   {
-    id: 'ScottT',
+    id: 'Scott.T',
     name: 'Scott M. Tulino',
     firstName: 'Scott',
     middleName: 'M.',
@@ -271,7 +271,7 @@ export const teamMembers = [
     ],
   },
   {
-    id: 'Aaron',
+    id: 'Aaron.S',
     name: 'Aaron J. Sanders',
     firstName: 'Aaron',
     middleName: 'J.',
@@ -293,7 +293,7 @@ export const teamMembers = [
     ],
   },
   {
-    id: 'Jay',
+    id: 'Jay.H',
     name: 'Jay Hines',
     firstName: 'Jay',
     middleName: '',
@@ -316,7 +316,7 @@ export const teamMembers = [
     ],
   },
   {
-    id: 'Jeffrey',
+    id: 'Jeffrey.K',
     name: 'Jeffrey H. Kaufman',
     firstName: 'Jeffrey',
     middleName: 'H.',
@@ -345,7 +345,7 @@ export const teamMembers = [
     ],
   },
   {
-    id: 'Roberta',
+    id: 'Roberta.B',
     name: 'Roberta S. Bren',
     firstName: 'Roberta',
     middleName: 'S.',
@@ -377,7 +377,7 @@ export const teamMembers = [
     ],
   },
   {
-    id: 'Allison',
+    id: 'Allison.T',
     name: 'Allison M. Tulino',
     firstName: 'Allison',
     middleName: 'M.',
@@ -403,7 +403,7 @@ export const teamMembers = [
     ],
   },
   {
-    id: 'Leo',
+    id: 'Leo.G',
     name: 'Leo V. Gureff',
     firstName: 'Leo',
     middleName: 'V.',
@@ -435,7 +435,7 @@ export const teamMembers = [
     Languages: ['Russian (native)'],
   },
   {
-    id: 'StephenBurr',
+    id: 'Stephen.B',
     name: "Stephen Burr",
     firstName: "Stephen",
     lastName: "Burr",
@@ -450,7 +450,7 @@ export const teamMembers = [
     experience:['Mr. Burr has over 38 years of experience in the field of intellectual property law, focusing primarily on patent prosecution and patent infringement and invalidity opinions.  Mr. Burr has represented Japanese and European companies before the U.S. PTO, and regularly travels to Japan to provide support and guidance to not only his clients, but members of the Japanese IP community as a whole.  Mr. Burr has presented seminars at the Japanese Patent Office on numerous occasions to provide updates on changes in U.S. patent law and practice.']
   },
   {
-    id: 'Mary',
+    id: 'Mary.L',
     name: 'Mary Frances Love',
     firstName: 'Mary',
     middleName: 'Frances',
@@ -483,7 +483,7 @@ export const teamMembers = [
     ],
   },
   {
-    id: 'Rebeccah',
+    id: 'Rebeccah.G',
     name: 'Rebeccah Gan',
     firstName: 'Rebeccah',
     middleName: '',
@@ -506,7 +506,7 @@ export const teamMembers = [
     Languages: ['Fluent in Hebrew; Proficient in Italian and French.'],
   },
   {
-    id: 'Floyd',
+    id: 'Floyd.C',
     name: 'Floyd E. Canfield',
     firstName: 'Floyd',
     middleName: 'E.',
@@ -536,7 +536,7 @@ export const teamMembers = [
     ],
   },
   {
-    id: 'David',
+    id: 'H.S',
     name: 'H. David Starr',
     firstName: 'H.',
     middleName: 'David',
@@ -560,7 +560,7 @@ export const teamMembers = [
     ],
   },
   {
-    id: 'Robert',
+    id: 'Robert.G',
     name: 'Robert F. Gnuse',
     firstName: 'Robert',
     middleName: 'F.',
@@ -589,7 +589,7 @@ export const teamMembers = [
     ],
   },
   {
-    id: 'Hyung',
+    id: 'Hyung.S',
     name: 'Hyung N. Sohn',
     firstName: 'Hyung',
     middleName: 'N.',
@@ -617,7 +617,7 @@ export const teamMembers = [
     Languages: ['English and Korean'],
   },
   {
-    id: 'Marcus',
+    id: 'Marcus.L',
     name: 'Marcus H. Luepke',
     firstName: 'Marcus',
     middleName: 'H.',
@@ -639,7 +639,7 @@ export const teamMembers = [
     Languages: ['Fluent in German; proficient in French'],
   },
   {
-    id: 'JayK',
+    id: 'Jay.K',
     name: 'Jay Klinck',
     firstName: 'Jay',
     middleName: '',
@@ -699,7 +699,7 @@ export const teamMembers = [
     ],
   },
   {
-    id: 'RobertP',
+    id: 'Robert.P',
     name: 'Robert “Bob” Polit',
     firstName: 'Robert',
     middleName: '“Bob”',
@@ -736,7 +736,7 @@ export const teamMembers = [
     memberships: '',
   },
   {
-    id: 'MatthewSanders',
+    id: 'Matthew.S',
     name: 'Matthew Sanders',
     firstName: 'Matthew',
     middleName: '',
@@ -758,7 +758,7 @@ export const teamMembers = [
     memberships: '',
   },
   {
-    id: 'Simone',
+    id: 'Simone.C',
     name: 'Simone Chen',
     firstName: 'Simone',
     middleName: '',
@@ -780,7 +780,7 @@ export const teamMembers = [
     ],
   },
   {
-    id: 'Roman',
+    id: 'Roman.C',
     name: 'Roman Campos',
     firstName: 'Roman',
     middleName: '',
@@ -826,7 +826,7 @@ export const teamMembers = [
   //     technicalExpertise:["Analog and digital circuits", "Semiconductor manufacturing processes", "Semiconductor manufacturing equipment", "Telecommunications, including LTE, 5G, Error Correction Codes, and Advanced Television Systems Committee (ATSC) Standards", "Video Coding/Decoding Technology, including H.264, High Efficiency Video Coding (HEVC), and Versatile Video Coding (VVC) standards"],
   // },
   {
-    id: 'Tetsu',
+    id: 'Tetsu.Y',
     name: 'Tetsu Yoshida',
     firstName: 'Tetsu',
     middleName: '',
@@ -853,7 +853,7 @@ export const teamMembers = [
     Languages: ['Native Japanese'],
   },
   {
-    id: 'Tingting',
+    id: 'Tingting.L',
     name: 'Tingting Liu',
     firstName: 'Tingting',
     middleName: '',
@@ -877,7 +877,7 @@ export const teamMembers = [
     Languages: ['Chinese (Mandarin)'],
   },
   {
-    id: 'Terry',
+    id: 'Yu-Te.C',
     name: 'Yu-Te (Terry) Chen',
     firstName: 'Yu-Te',
     middleName: '(Terry)',
@@ -910,7 +910,7 @@ export const teamMembers = [
     Languages: ['Chinese (Mandarin and Taiwanese)'],
   },
   {
-    id: 'Shay',
+    id: 'A.C',
     name: 'A. Shay Canfield',
     firstName: 'A.',
     middleName: 'Shay',
@@ -943,7 +943,7 @@ export const teamMembers = [
     ],
   },
   {
-    id: 'Kentaro',
+    id: 'Kentaro.H',
     name: 'Kentaro Higuchi',
     firstName: 'Kentaro',
     middleName: '',
@@ -966,7 +966,7 @@ export const teamMembers = [
     Languages: ['Native Japanese'],
   },
   {
-    id: 'Akiyo',
+    id: 'Akiyo.Y',
     name: 'Akiyo Yoshida',
     firstName: 'Akiyo',
     middleName: '',
@@ -986,7 +986,7 @@ export const teamMembers = [
     ],
   },
   {
-    id: 'Susan',
+    id: 'Susan.B',
     name: 'Susan Brady Blasco',
     firstName: 'Susan',
     middleName: 'Brady',
@@ -1029,7 +1029,7 @@ export const teamMembers = [
     Languages: ['English', 'Spanish'],
   },
   {
-    id: 'Sherri',
+    id: 'Sherri.W',
     name: 'Sherri Weisbeck-Raslich',
     firstName: 'Sherri',
     middleName: '',
@@ -1073,7 +1073,7 @@ export const teamMembers = [
   //   title: 'OF COUNSEL',
   // },
   {
-    id: 'Aditya',
+    id: 'Aditya.K',
     name: 'Aditya Krishnan',
     firstName: 'Aditya',
     middleName: '',
@@ -1111,7 +1111,7 @@ export const teamMembers = [
     ],
   },
   {
-    id: 'Lee',
+    id: 'Lee.H',
     name: 'Lee Hsu',
     title: 'OF COUNSEL',
     firstName: 'Lee',
@@ -1145,7 +1145,7 @@ export const teamMembers = [
     phone: '(703)621-7140 x 135',
   },
   {
-    id: 'jeremiah',
+    id: 'Jeremiah.W',
     name: 'Jeremiah Wise',
     firstName: 'Jeremiah',
     middleName: '',
@@ -1173,7 +1173,7 @@ export const teamMembers = [
     ],
   },
   {
-    id: 'Philip',
+    id: 'Philip.S',
     name: 'Philip R. Smith',
     firstName: 'Philip',
     middleName: 'Robert',
@@ -1193,7 +1193,7 @@ export const teamMembers = [
     title: 'ASSOCIATE',
   },
   {
-    id: 'Adesh',
+    id: 'Adesh.B',
     name: 'Adesh Bhargava',
     firstName: 'Adesh',
     middleName: '',
@@ -1225,7 +1225,7 @@ export const teamMembers = [
     title: 'PRINCIPAL SHAREHOLDER',
   },
   {
-    id: 'Christopher',
+    id: 'Christopher.E',
     name: 'Christopher Emond',
     firstName: 'Christopher',
     middleName: '',
@@ -1240,7 +1240,7 @@ export const teamMembers = [
     ],
   },
   {
-    id: 'Sally',
+    id: 'Sally.M',
     name: 'Sally Mueller',
     firstName: 'Sally',
     middleName: '',
@@ -1254,7 +1254,7 @@ export const teamMembers = [
   },
   // ...more members
   {
-    id: 'Catherine',
+    id: 'Catherine.M',
     name: 'Catherine L. Muncy',
     firstName: 'Catherine',
     middleName: 'L.',

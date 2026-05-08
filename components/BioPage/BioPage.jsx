@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams, useLocation, useNavigate, Navigate } from "react-router-dom";
 import { Mail, Phone, ChevronLeft, ChevronRight, GraduationCap, Scale, Users, Briefcase } from "lucide-react";
 import { Badge } from "../ui/badge";
@@ -19,23 +19,49 @@ const SECTION_ICONS = {
 /* ─── Membership tooltip ─────────────────────────────── */
 function MembershipBadge({ label, membershipsData }) {
   const [show, setShow] = useState(false);
+  const [tooltipLeft, setTooltipLeft] = useState(0);
+  const [caretLeft, setCaretLeft] = useState("50%");
+  const badgeRef = useRef(null);
   const info = membershipsData?.[label];
 
+  const open = () => {
+    if (!info || !badgeRef.current) return;
+    const rect = badgeRef.current.getBoundingClientRect();
+    const TOOLTIP_W = 288;
+    const MARGIN = 8;
+    // Ideal: center tooltip over badge
+    const ideal = rect.left + rect.width / 2 - TOOLTIP_W / 2;
+    // Clamp so tooltip stays within viewport
+    const clamped = Math.max(MARGIN, Math.min(ideal, window.innerWidth - TOOLTIP_W - MARGIN));
+    // Position relative to the badge div (which is the offsetParent via position:relative)
+    setTooltipLeft(clamped - rect.left);
+    // Caret points at center of badge, relative to tooltip box
+    setCaretLeft(`${rect.left + rect.width / 2 - clamped}px`);
+    setShow(true);
+  };
+
   return (
-    <div className="relative inline-block">
+    <div className="relative inline-block" ref={badgeRef}>
       <Badge
         variant="outline"
         className="cursor-default text-sm font-semibold px-4 py-1.5 bg-brand-navy text-white border-brand-teal hover:bg-brand-teal/20 transition-colors"
-        onMouseEnter={() => info && setShow(true)}
+        onMouseEnter={open}
         onMouseLeave={() => setShow(false)}
+        onClick={() => (show ? setShow(false) : open())}
       >
         {label}
       </Badge>
       {show && info && (
-        <div className="absolute bottom-full left-0 mb-2 z-20 w-72 rounded-xl bg-brand-navy p-4 text-white shadow-2xl">
+        <div
+          className="absolute bottom-full mb-2 z-20 w-72 rounded-xl bg-brand-navy p-4 text-white shadow-2xl"
+          style={{ left: tooltipLeft }}
+        >
           <p className="font-semibold text-sm mb-1">{info.name}</p>
           <p className="text-xs text-white/75 leading-relaxed">{info.description}</p>
-          <div className="absolute -bottom-1.5 left-4 h-3 w-3 rotate-45 bg-brand-navy" />
+          <div
+            className="absolute -bottom-1.5 h-3 w-3 rotate-45 bg-brand-navy"
+            style={{ left: caretLeft }}
+          />
         </div>
       )}
     </div>
