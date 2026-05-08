@@ -58,7 +58,7 @@ export function Disclaimer() {
 
               <p className="text-base text-muted-foreground leading-relaxed">
                 <Link
-                  to="/Scott.T"
+                  to="/team/Scott.T"
                   className="font-semibold text-brand-navy underline underline-offset-2 hover:text-brand-teal transition-colors"
                 >
                   Scott Tulino

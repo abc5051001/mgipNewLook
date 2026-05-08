@@ -30,7 +30,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/careers" element={<Careers />} />
             <Route
-              path="/:id"
+              path="/team/:id"
               element={<BioPage membershipsData={membershipsData} />}
             />
             {/* <Route path="/blog" element={<BlogList />} /> */}

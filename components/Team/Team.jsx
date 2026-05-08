@@ -110,7 +110,7 @@ function FilterSelect({ value, onChange, options }) {
 function MemberCard({ member, filteredMembers }) {
   return (
     <Link
-      to={`/${member.id}`}
+      to={`/team/${member.id}`}
       state={{ filteredMembers }}
       className="group block rounded-xl overflow-hidden border border-border bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
     >

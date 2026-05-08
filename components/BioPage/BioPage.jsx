@@ -144,7 +144,7 @@ const BioPage = ({ membershipsData }) => {
 
   const goToMember = (index) => {
     const target = allMembers[index];
-    if (target) navigate(`/${target.id}`, { state: { filteredMembers: allMembers } });
+    if (target) navigate(`/team/${target.id}`, { state: { filteredMembers: allMembers } });
   };
 
   /* Build dynamic sections (skip keys already rendered or non-array) */
@@ -166,7 +166,7 @@ const BioPage = ({ membershipsData }) => {
     "@type": "Person",
     name: member.name,
     jobTitle: titleStr,
-    url: `https://mg-ip.com/${member.id}`,
+    url: `https://mg-ip.com/team/${member.id}`,
     image: member.photo,
     email: member.email,
     telephone: member.phone,
@@ -185,7 +185,7 @@ const BioPage = ({ membershipsData }) => {
         <meta property="og:title" content={`${member.name} | Muncy, Geissler, Olds & Lowe, P.C.`} />
         <meta property="og:description" content={`${member.name} is a ${titleStr} at Muncy, Geissler, Olds & Lowe, P.C.`} />
         <meta property="og:image" content={member.photo} />
-        <link rel="canonical" href={`https://mg-ip.com/${member.id}`} />
+        <link rel="canonical" href={`https://mg-ip.com/team/${member.id}`} />
         <script type="application/ld+json">{JSON.stringify(personSchema)}</script>
       </Helmet>
       {/* Header band */}
