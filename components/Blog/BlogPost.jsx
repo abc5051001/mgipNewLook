@@ -14,18 +14,18 @@ function formatDate(dateStr) {
 
 const mdComponents = {
   h1: ({ children }) => (
-    <h1 className="text-3xl font-bold text-brand-navy mt-12 mb-5 leading-tight">
+    <h1 className="font-display text-3xl font-semibold text-brand-navy mt-12 mb-5 leading-tight tracking-tight">
       {children}
     </h1>
   ),
   h2: ({ children }) => (
-    <h2 className="flex items-center gap-3 text-2xl font-bold text-brand-navy mt-12 mb-5 pb-3 border-b border-border">
+    <h2 className="flex items-center gap-3 font-display text-2xl font-semibold text-brand-navy mt-12 mb-5 pb-3 border-b border-border tracking-tight">
       <span className="inline-block h-6 w-1 rounded-full bg-brand-teal shrink-0" />
       {children}
     </h2>
   ),
   h3: ({ children }) => (
-    <h3 className="text-xl font-semibold text-brand-navy mt-10 mb-4">
+    <h3 className="font-display text-xl font-semibold text-brand-navy mt-10 mb-4 tracking-tight">
       {children}
     </h3>
   ),
@@ -136,7 +136,7 @@ export default function BlogPost() {
             </div>
           )}
 
-          <h1 className="text-3xl sm:text-4xl font-bold text-white leading-tight">
+          <h1 className="font-display text-3xl sm:text-4xl font-semibold text-white tracking-tight leading-tight [text-wrap:balance]">
             {post.title}
           </h1>
 

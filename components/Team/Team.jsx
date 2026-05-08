@@ -137,6 +137,7 @@ export const Team = ({ members }) => {
   const [activeLetter, setActiveLetter] = useState("");
   const [titleFilter, setTitleFilter] = useState("All");
   const [membershipFilter, setMembershipFilter] = useState("All");
+  const [alphaOpen, setAlphaOpen] = useState(false);
 
   const filtered = members.filter((m) => {
     // Letter filter
@@ -244,16 +245,39 @@ export const Team = ({ members }) => {
           </div>
 
           {/* Alphabet nav */}
-          <div className="mt-3 flex flex-wrap gap-0.5">
+          {/* Mobile toggle */}
+          <button
+            type="button"
+            onClick={() => setAlphaOpen((o) => !o)}
+            className={cn(
+              "sm:hidden mt-3 inline-flex items-center gap-2 h-9 px-4 rounded-full border text-sm font-medium transition-colors",
+              activeLetter
+                ? "border-brand-navy bg-brand-navy text-white"
+                : "border-border text-muted-foreground hover:border-brand-navy/40 hover:text-brand-navy"
+            )}
+          >
+            {activeLetter ? `Letter: ${activeLetter}` : "A–Z Filter"}
+            <ChevronDown
+              size={13}
+              className={cn("transition-transform duration-200", alphaOpen && "rotate-180")}
+            />
+          </button>
+
+          <div className={cn(
+            "flex flex-wrap gap-0.5",
+            "hidden sm:flex mt-3",
+            alphaOpen && "!flex mt-3"
+          )}>
             {ALPHABET.map((letter) => {
               const available = availableInitials.has(letter);
               return (
                 <button
                   key={letter}
                   disabled={!available}
-                  onClick={() =>
-                    setActiveLetter((prev) => (prev === letter ? "" : letter))
-                  }
+                  onClick={() => {
+                    setActiveLetter((prev) => (prev === letter ? "" : letter));
+                    setAlphaOpen(false);
+                  }}
                   className={cn(
                     "h-10 w-10 rounded text-base font-medium transition-colors",
                     !available && "text-muted-foreground/30 cursor-default",

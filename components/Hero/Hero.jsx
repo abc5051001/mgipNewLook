@@ -12,28 +12,26 @@ export default function Hero({ onLearnMoreClick }) {
         style={{ backgroundImage: `url(${bgImage})` }}
       />
       {/* Dark gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/20 to-black/35" />
 
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-5xl px-6 lg:px-8 text-center">
         <FadeIn>
           {/* Eyebrow */}
-          <p className="mb-6 text-xs font-semibold uppercase tracking-[0.25em] text-white">
+          <p className="mb-6 font-display text-base font-semibold text-white/80">
             Intellectual Property Law · Washington, D.C. Metro Area
           </p>
 
           {/* Firm name */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.05]">
-            MUNCY, GEISSLER,
+          <h1 className="font-display text-5xl font-medium tracking-tight text-white [text-wrap:balance] sm:text-6xl lg:text-7xl">
+            Muncy, Geissler,
             <br />
-            <span className="text-brand-teal">OLDS &amp; LOWE</span>, P.C.
+            Olds &amp; Lowe, P.C.
           </h1>
 
           {/* Tagline */}
-          <p className="mt-8 mx-auto max-w-2xl text-lg sm:text-xl text-white leading-relaxed font-light">
+          <p className="mt-8 mx-auto max-w-2xl text-xl text-white/75 leading-relaxed font-light">
             An Intellectual Property Firm in the Washington, D.C. Metro Area, specializing in Engineering, Science, and Legal Expertise.
-
-
           </p>
 
           {/* CTAs */}

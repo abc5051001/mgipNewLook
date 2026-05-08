@@ -140,12 +140,12 @@ const milestones = [
   {
     year: "2010",
     title: "New Leadership",
-    events: ["John Ciccozzi joins as Principal Shareholder"],
+    events: ["John Ciccozzi joins the leadership team as Principal Shareholder"],
   },
   {
     year: "2013",
     title: "Expanding the Team",
-    events: ["Daniel Podhajny joins as Principal Shareholder"],
+    events: ["Daniel Podhajny joins the leadership team as Principal Shareholder"],
   },
   {
     year: "2016",
@@ -159,8 +159,8 @@ const milestones = [
     year: "2021",
     title: "New Principals",
     events: [
-      "Scott M. Tulino joins as Principal Shareholder",
-      "Aaron J. Sanders joins as Principal Shareholder",
+      "Scott M. Tulino joins the leadership team as Principal Shareholder",
+      "Aaron J. Sanders joins the leadership team as Principal Shareholder",
     ],
   },
   {
@@ -169,6 +169,13 @@ const milestones = [
     events: [
       "Firm relocates to Alexandria, VA",
       "Conveniently located near the USPTO",
+    ],
+  },
+  {
+    year: "2026",
+    title: "New Leadership",
+    events: [
+      "H. David Starr, Leo V. Gureff, Rebeccah Gan, and Adesh Bhargava join the leadership team as Principal Shareholders",
     ],
   },
 ];
@@ -229,15 +236,15 @@ export default function InfoSection() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <FadeIn>
             <div className="max-w-3xl mx-auto text-center mb-16">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-teal mb-4">
+              <p className="font-display text-base font-semibold text-brand-teal mb-4">
                 About Our Firm
               </p>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-navy tracking-tight mb-6">
+              <h2 className="font-display text-4xl font-medium tracking-tight text-brand-navy [text-wrap:balance] sm:text-5xl mb-6">
                 Advancing Innovation
                 <br />
                 Through IP Excellence
               </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">
+              <p className="text-xl text-muted-foreground leading-relaxed">
                 Founded in 2006, Muncy, Geissler, Olds &amp; Lowe, PC is a top
                 intellectual property law firm in the Washington, D.C. area. We
                 provide high-quality, efficient IP services for both domestic
@@ -274,10 +281,10 @@ export default function InfoSection() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <FadeIn>
             <div className="text-center mb-16">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-teal mb-4">
+              <p className="font-display text-base font-semibold text-brand-teal mb-4">
                 What We Do
               </p>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-navy tracking-tight">
+              <h2 className="font-display text-4xl font-medium tracking-tight text-brand-navy [text-wrap:balance] sm:text-5xl">
                 Our Services
               </h2>
             </div>
@@ -287,24 +294,24 @@ export default function InfoSection() {
             <div className="grid md:grid-cols-3 gap-8">
               {services.map((svc, i) => (
                 <FadeIn key={i}>
-                  <Card className="group h-full flex flex-col hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-border/60 cursor-pointer">
+                  <Card
+                    onClick={() => setActiveService(svc)}
+                    className="group h-full flex flex-col hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-border/60 cursor-pointer"
+                  >
                     <CardContent className="p-8 flex flex-col h-full">
                       <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-brand-navy/5">
                         <svc.icon className="h-7 w-7 text-brand-teal" />
                       </div>
-                      <h3 className="text-xl font-bold text-brand-navy mb-3">
+                      <h3 className="font-display text-xl font-semibold text-brand-navy mb-3">
                         {svc.title}
                       </h3>
-                      <p className="text-muted-foreground text-sm leading-relaxed flex-1">
+                      <p className="text-muted-foreground text-base leading-relaxed flex-1">
                         {svc.description}
                       </p>
-                      <button
-                        onClick={() => setActiveService(svc)}
-                        className="mt-6 inline-flex items-center text-sm font-semibold text-brand-teal hover:text-brand-navy transition-colors group-hover:gap-2 gap-1"
-                      >
+                      <span className="mt-6 inline-flex items-center text-sm font-semibold text-brand-teal group-hover:text-brand-navy transition-colors group-hover:gap-2 gap-1">
                         Learn More
                         <span className="transition-transform group-hover:translate-x-1">→</span>
-                      </button>
+                      </span>
                     </CardContent>
                   </Card>
                 </FadeIn>
@@ -319,10 +326,10 @@ export default function InfoSection() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <FadeIn>
             <div className="text-center mb-16">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-teal mb-4">
+              <p className="font-display text-base font-semibold text-brand-teal mb-4">
                 Why MG-IP
               </p>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
+              <h2 className="font-display text-4xl font-medium tracking-tight text-white [text-wrap:balance] sm:text-5xl">
                 Built for Exceptional Results
               </h2>
             </div>
@@ -333,8 +340,8 @@ export default function InfoSection() {
               {features.map((feat, i) => {
                 const Icon = feat.icon;
                 return (
-                  <FadeIn key={i}>
-                    <div className="p-6 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                  <FadeIn key={i} className="h-full">
+                    <div className="h-full p-6 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
                       <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-brand-teal/20">
                         <Icon className="h-6 w-6 text-brand-teal" />
                       </div>
@@ -358,10 +365,10 @@ export default function InfoSection() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <FadeIn>
             <div className="text-center mb-16">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-teal mb-4">
+              <p className="font-display text-base font-semibold text-brand-teal mb-4">
                 Our History
               </p>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-navy tracking-tight">
+              <h2 className="font-display text-4xl font-medium tracking-tight text-brand-navy [text-wrap:balance] sm:text-5xl">
                 Our Milestones
               </h2>
             </div>
@@ -421,10 +428,10 @@ export default function InfoSection() {
       <section className="py-20 bg-muted/50 border-t border-border">
         <FadeIn>
           <div className="mx-auto max-w-3xl px-6 text-center">
-            <h2 className="text-2xl sm:text-3xl font-bold text-brand-navy mb-4">
+            <h2 className="font-display text-3xl font-medium tracking-tight text-brand-navy [text-wrap:balance] sm:text-4xl mb-4">
               Ready to Protect Your Innovation?
             </h2>
-            <p className="text-muted-foreground mb-8">
+            <p className="text-xl text-muted-foreground mb-8">
               Our team of experienced IP professionals is ready to help you
               navigate the complex landscape of intellectual property law.
             </p>

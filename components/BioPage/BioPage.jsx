@@ -173,7 +173,7 @@ const BioPage = ({ membershipsData }) => {
 
               {/* Name / title / contact */}
               <div className="flex-1 pb-2">
-                <h1 className="text-3xl sm:text-4xl font-bold text-white leading-tight">
+                <h1 className="font-display text-3xl sm:text-4xl font-medium tracking-tight text-white [text-wrap:balance]">
                   {member.name}
                 </h1>
                 <p className="mt-2 text-base font-medium text-brand-teal uppercase tracking-wide">

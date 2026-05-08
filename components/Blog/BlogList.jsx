@@ -51,7 +51,7 @@ function PostCard({ post }) {
           </div>
         )}
 
-        <h2 className="text-[17px] font-bold text-brand-navy leading-snug group-hover:text-brand-teal transition-colors">
+        <h2 className="font-display text-[17px] font-semibold text-brand-navy leading-snug group-hover:text-brand-teal transition-colors">
           {post.title}
         </h2>
 

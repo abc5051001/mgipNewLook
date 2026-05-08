@@ -20,9 +20,17 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
           {/* Column 1 – Firm identity */}
           <div>
-            <h3 className="text-sm font-bold uppercase tracking-widest text-white mb-4">
-              Muncy, Geissler,<br />Olds &amp; Lowe, P.C.
-            </h3>
+            <Link
+              to="/"
+              className="flex flex-col leading-tight group select-none mb-4"
+            >
+              <span className="font-display text-[17px] font-semibold tracking-wide uppercase text-white group-hover:text-white/80 transition-colors">
+                Muncy, Geissler,
+              </span>
+              <span className="font-display text-[17px] font-semibold tracking-wide uppercase text-white group-hover:text-white/80 transition-colors">
+                Olds &amp; Lowe, P.C.
+              </span>
+            </Link>
             <p className="text-sm text-white/80 leading-relaxed max-w-xs">
               An intellectual property law firm in the Washington, D.C. metro
               area, specializing in Patent, Trademark, and Copyright law.
@@ -49,7 +57,7 @@ const Footer = () => {
 
           {/* Column 2 – Quick links */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-widest text-white mb-5">
+            <h4 className="font-display text-sm font-semibold uppercase tracking-widest text-white mb-5">
               Quick Links
             </h4>
             <ul className="space-y-3">
@@ -68,7 +76,7 @@ const Footer = () => {
 
           {/* Column 3 – Contact */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-widest text-white mb-5">
+            <h4 className="font-display text-sm font-semibold uppercase tracking-widest text-white mb-5">
               Get In Touch
             </h4>
             <ul className="space-y-4">

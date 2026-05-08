@@ -47,7 +47,7 @@ export default function Contact() {
           {/* Left — contact info + map */}
           <div className="lg:col-span-2">
             <FadeIn>
-              <h2 className="text-lg font-semibold text-brand-navy mb-6">Our Office</h2>
+              <h2 className="font-display text-lg font-semibold text-brand-navy mb-6">Our Office</h2>
 
               <div className="space-y-5">
                 {contactDetails.map(({ icon: Icon, label, lines, href, external }) => (
@@ -100,7 +100,7 @@ export default function Contact() {
           <div className="lg:col-span-3">
             <FadeIn>
               <div className="rounded-2xl border border-border bg-white p-8 shadow-sm">
-                <h2 className="text-lg font-semibold text-brand-navy mb-1">Send a Message</h2>
+                <h2 className="font-display text-lg font-semibold text-brand-navy mb-1">Send a Message</h2>
                 <p className="text-sm text-muted-foreground mb-8">
                   Fill out the form below and we'll get back to you promptly.
                 </p>

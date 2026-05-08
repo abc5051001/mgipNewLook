@@ -25,7 +25,7 @@ export function Careers() {
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           {/* Left – description */}
           <FadeIn>
-            <h2 className="text-2xl font-bold text-brand-navy mb-5">Why Work With Us?</h2>
+            <h2 className="font-display text-2xl font-semibold text-brand-navy mb-5">Why Work With Us?</h2>
             <p className="text-base text-muted-foreground leading-relaxed mb-6">
               At Muncy, Geissler, Olds &amp; Lowe PC, we welcome inquiries from
               motivated candidates with a passion for learning, a strong work
@@ -57,7 +57,7 @@ export function Careers() {
           {/* Right – apply card */}
           <FadeIn>
             <div className="rounded-2xl border border-border bg-white shadow-sm p-8 sticky top-28">
-              <h2 className="text-xl font-bold text-brand-navy mb-2">Open Positions</h2>
+              <h2 className="font-display text-xl font-semibold text-brand-navy mb-2">Open Positions</h2>
               <p className="text-sm text-muted-foreground mb-6">
                 View all current openings and apply through our recruiting portal.
               </p>

@@ -30,8 +30,7 @@ export const NavBar = () => {
 
   // On the homepage (/) the hero is full-screen dark — use light (white) text until scrolled.
   // On all other pages the content starts below the dark header band — white text is always fine.
-  const isHome = location.pathname === "/";
-  const transparent = isHome && !scrolled;
+  const transparent = !scrolled;
 
   return (
     <>
@@ -50,7 +49,7 @@ export const NavBar = () => {
           <Link to="/" className="flex flex-col leading-tight group select-none">
             <span
               className={cn(
-                "font-roman text-[15px] font-bold tracking-wide uppercase transition-colors",
+                "font-display text-[17px] font-semibold tracking-wide uppercase transition-colors",
                 scrolled
                   ? "text-brand-navy group-hover:text-brand-teal"
                   : "text-white group-hover:text-white/80"
@@ -60,7 +59,7 @@ export const NavBar = () => {
             </span>
             <span
               className={cn(
-                "font-roman text-[15px] font-bold tracking-wide uppercase transition-colors",
+                "font-display text-[17px] font-semibold tracking-wide uppercase transition-colors",
                 scrolled
                   ? "text-brand-navy group-hover:text-brand-teal"
                   : "text-white group-hover:text-white/80"
@@ -80,7 +79,7 @@ export const NavBar = () => {
                   key={to}
                   to={to}
                   className={cn(
-                    "font-roman group relative px-4 py-2.5 text-sm rounded-md transition-colors duration-150",
+                    "group relative px-4 py-2.5 text-base rounded-md transition-colors duration-150",
                     scrolled
                       ? active
                         ? "text-brand-navy font-semibold"
