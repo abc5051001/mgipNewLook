@@ -46,7 +46,11 @@ export const NavBar = () => {
       >
         <div className="mx-auto max-w-7xl px-6 lg:px-8 flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex flex-col leading-tight group select-none">
+          <Link
+            to="/"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="flex flex-col leading-tight group select-none"
+          >
             <span
               className={cn(
                 "font-display text-[17px] font-semibold tracking-wide uppercase transition-colors",

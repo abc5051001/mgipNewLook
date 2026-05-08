@@ -22,6 +22,7 @@ const Footer = () => {
           <div>
             <Link
               to="/"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               className="flex flex-col leading-tight group select-none mb-4"
             >
               <span className="font-display text-[17px] font-semibold tracking-wide uppercase text-white group-hover:text-white/80 transition-colors">
