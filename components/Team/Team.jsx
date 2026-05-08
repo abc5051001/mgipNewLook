@@ -140,6 +140,11 @@ export const Team = ({ members }) => {
   const [alphaOpen, setAlphaOpen] = useState(false);
   const [filtersOpen, setFiltersOpen] = useState(false);
 
+  // Scroll to top when any filter changes so results are always visible
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [search, activeLetter, titleFilter, membershipFilter]);
+
   const filtered = members.filter((m) => {
     // Letter filter
     if (activeLetter && !getInitials(m).includes(activeLetter)) return false;
