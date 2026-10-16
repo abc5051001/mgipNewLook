@@ -2,7 +2,7 @@ import { ArrowUpRight, Plus } from 'lucide-react';
 import PageHero from './PageHero';
 import { CareersArtwork } from './HeroArtwork';
 import copy from '../../content/firm-copy.json';
-import openings from '../../content/career-openings.json';
+const recruiting='https://recruiting.paylocity.com/recruiting/jobs/All/5847c0ea-c9f8-4ed7-8865-cbd0d03e3e2d/Muncy-Geissler-Olds-Lowe-PC';
 
 export function Careers() {
   const content = copy.careers;
@@ -13,8 +13,7 @@ export function Careers() {
       <div className="mg-career-principles">{content.perks.map(perk=><div key={perk.title}><Plus size={18}/><div><h3>{perk.title}</h3><p>{perk.desc}</p></div></div>)}</div>
     </div><div className="mg-careers-panel">
       <span className="mg-eyebrow">{content.openTitle}</span><h2>{content.openTitle}</h2><p>{content.openDescription}</p>
-      <ul className="mg-current-openings">{openings.positions.map(position=><li key={position.url}><a href={position.url} target="_blank" rel="noopener noreferrer"><span>{position.title}</span><ArrowUpRight size={18} aria-hidden="true"/><small>{position.location}</small></a></li>)}</ul>
-      <a href={openings.source} target="_blank" rel="noopener noreferrer" className="mg-button mg-button-dark">View All Openings<ArrowUpRight size={18}/></a><small>Listings checked October 16, 2026. Visit our recruiting portal for the latest availability.</small>
+      <a href={recruiting} target="_blank" rel="noopener noreferrer" className="mg-button mg-button-dark">View Current Openings<ArrowUpRight size={18}/></a><small>Visit our recruiting portal for the latest opportunities and application details.</small>
     </div></section>
   </>;
 }

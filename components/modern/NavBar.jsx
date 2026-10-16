@@ -50,7 +50,7 @@ export function NavBar() {
   return <>
     <a className="mg-skip" href="#main-content">Skip to content</a>
     <header ref={header} className={`mg-header mg-header-classic${home ? ' mg-header-home' : ''}`} data-scrolled={scrolled} data-menu-open={open} onBlurCapture={event => { if (event.relatedTarget && !event.currentTarget.contains(event.relatedTarget)) setOpen(false); }}><div className="mg-shell mg-nav-inner">
-      <Link to="/" className="mg-logo" aria-label="MG-IP home">
+      <Link to="/" state={{scrollToTop:'smooth'}} className="mg-logo" aria-label="MG-IP home">
         <span className="mg-wordmark">Muncy, Geissler,<br/>Olds &amp; Lowe, P.C.</span>
       </Link>
       <nav className="mg-nav" aria-label="Main navigation">{links.map(([label, to]) => <DesktopNavLink label={label} to={to} key={to}/>)}</nav>

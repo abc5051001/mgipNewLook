@@ -18,7 +18,7 @@ export default function Footer() {
       </div>;
   return <footer className="mg-footer mg-footer-structured"><div className="mg-shell">
     <div className="mg-footer-grid">
-      <div className="mg-footer-brand"><Link to="/" className="mg-footer-logo"><img src="/mgip-logo.png" alt="Muncy, Geissler, Olds & Lowe, P.C." width="600" height="150"/></Link>{geometry}</div>
+      <div className="mg-footer-brand"><Link to="/" state={{scrollToTop:'smooth'}} className="mg-footer-logo"><img src="/mgip-logo.png" alt="Muncy, Geissler, Olds & Lowe, P.C." width="600" height="150"/></Link>{geometry}</div>
       <nav aria-label="Footer navigation"><h3>Quick Links</h3>{[['About','/'],['Our Team','/team'],['Careers','/careers'],['Contact Us','/contact'],['Disclaimer','/disclaimer']].map(([label,to])=><Link to={to} key={to}>{label}</Link>)}</nav>
       <div className="mg-footer-office"><h3>Get In Touch</h3><p>125 S Royal St<br/>Alexandria, VA 22314</p><a href="tel:+17036217140">+1 (703) 621-7140<ArrowUpRight size={15}/></a></div>
       <div className="mg-footer-connect"><div className="mg-footer-actions"><Link className="mg-button mg-button-light" to="/contact">Contact Us Today<ArrowUpRight size={18}/></Link><Link className="mg-text-link" to="/team">Meet Our Team<ArrowUpRight size={18}/></Link></div><div className="mg-footer-contact-links"><a href="mailto:mailroom@mg-ip.com"><Mail size={18} aria-hidden="true"/><span>mailroom@mg-ip.com</span><ArrowUpRight size={16}/></a><a href="https://www.linkedin.com/company/muncy-geissler-olds-&-lowe/" target="_blank" rel="noopener noreferrer"><FaLinkedinIn size={18} aria-hidden="true"/><span>LinkedIn</span><ArrowUpRight size={16}/></a></div></div>

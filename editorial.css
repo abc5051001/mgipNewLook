@@ -281,13 +281,6 @@
 .mg-membership-explanation{position:static;width:100%;padding:20px;background:#1a303f;border:1px solid #1a303f}
 .mg-membership-explanation[hidden]{display:none}
 .mg-careers-grid>.mg-careers-panel{align-self:start}
-.mg-careers-panel .mg-current-openings{margin:26px 0;list-style:none;padding:0}
-.mg-careers-panel .mg-current-openings>li{display:block;padding:0;border:0}
-.mg-current-openings a{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:7px 20px;padding:20px;background:#fcfdff;border:1px solid var(--mg-line);font-family:var(--mg-sans);color:var(--mg-ink);transition:border-color .2s,background .2s}
-.mg-current-openings a:hover,.mg-current-openings a:focus-visible{background:#f3f7fa;border-color:#7894a7}
-.mg-current-openings a>span{font-size:19px;font-weight:500;line-height:1.4}
-.mg-current-openings a>svg{margin-top:3px}
-.mg-current-openings a>small{grid-column:1/-1;font-size:14px;line-height:1.5;color:var(--mg-muted)}
 .mg-profile-body .mg-membership-explanation>p{margin:0;color:#e4edf3;font-size:16px;line-height:1.75}
 
 /* A ruled footer with connected, dimensional practice forms. */
