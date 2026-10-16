@@ -9,6 +9,7 @@ try {
   const errors=[];
   page.on('pageerror',error=>errors.push(error.message));
   await page.goto(base,{waitUntil:'networkidle'});
+  await page.getByRole('tabpanel').scrollIntoViewIfNeeded();
   await page.locator('.mg-drafting-figure').scrollIntoViewIfNeeded();
   const figure=page.locator('.mg-drafting-figure');
   const stage=page.getByRole('slider',{name:/Explore the drafting instrument/});
@@ -41,7 +42,7 @@ try {
   await page.keyboard.press('Home');
   await stage.hover({position:{x:300,y:150}});
   await expect.poll(async()=>Number(await progress())).toBeGreaterThan(.1);
-  await page.getByRole('button',{name:'Play illustration'}).click();
+  await figure.getByRole('button',{name:'Play illustration',exact:true}).click();
   await page.locator('footer').scrollIntoViewIfNeeded();
   await expect(figure).toHaveAttribute('data-active','false');
   const outside=await progress();

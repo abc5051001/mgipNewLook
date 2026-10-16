@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom';
 import { ArrowUpRight, X } from 'lucide-react';
 import TrademarkFigure from './TrademarkFigure';
 import RightsFigure from './RightsFigure';
+import PatentFigure from './PatentFigure';
 
 export default function ServiceDialog({ service, onClose }) {
   const ref = useRef(null);
   const titleId = useId();
-  const art=service.title==='Trademark'?<TrademarkFigure/>:service.title==='Copyright'?<RightsFigure/>:null;
+  const art=service.title==='Patent'?<PatentFigure/>:service.title==='Trademark'?<TrademarkFigure/>:service.title==='Copyright'?<RightsFigure/>:null;
   useLayoutEffect(() => {
     const dialog = ref.current;
     const previous = document.activeElement;

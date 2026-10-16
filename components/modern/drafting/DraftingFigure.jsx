@@ -6,6 +6,7 @@ import { clamp, poseAt, project, offset, pathOf } from './model.mjs';
 import './drafting.css';
 
 const rest = poseAt(0).tip;
+const halfCycle = 6.5;
 
 export default function DraftingFigure({ compact=false }) {
   const anchor = useRef(null), stage = useRef(null), parts = useRef(new Map()), stack = useRef(null), readout = useRef(null);
@@ -62,7 +63,7 @@ export default function DraftingFigure({ compact=false }) {
       const touring = !paused && !reduced && !s.focus;
       if (touring) {
         s.idle += dt;
-        if (s.idle > .25) { s.clock += dt; s.target = .5 - .5 * Math.cos(s.clock * Math.PI / 5); }
+        if (s.idle > .25) { s.clock += dt; s.target = .5 - .5 * Math.cos(s.clock * Math.PI / halfCycle); }
       }
       s.progress = reduced ? s.target : s.progress + (s.target - s.progress) * (1 - Math.exp(-dt / .18));
       if (Math.abs(s.target - s.progress) < .00001) s.progress = s.target;
@@ -86,7 +87,7 @@ export default function DraftingFigure({ compact=false }) {
     s.target = clamp(value);
     s.idle = -.9;
     // Resume the idle tour from the same location rather than jumping back to zero.
-    s.clock = Math.acos(1 - 2 * s.target) * 5 / Math.PI;
+    s.clock = Math.acos(1 - 2 * s.target) * halfCycle / Math.PI;
     setAccessibleValue(Math.round(s.target * 100));
     if (reduced) { s.progress = s.target; paint.current(); }
     else kick.current();
@@ -94,7 +95,7 @@ export default function DraftingFigure({ compact=false }) {
   function toggle() {
     state.current.target = state.current.progress;
     state.current.idle = 0;
-    state.current.clock = Math.acos(1 - 2 * state.current.progress) * 5 / Math.PI;
+    state.current.clock = Math.acos(1 - 2 * state.current.progress) * halfCycle / Math.PI;
     setPaused(value => !value);
   }
   return <figure ref={anchor} className={`mg-collaboration-art mg-drafting-figure iso ${compact?'mg-service-machine mg-patent-machine':''}`} data-kind={compact?'patent':undefined} data-theme="light" data-active={visible && !reduced && !paused}>

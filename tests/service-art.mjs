@@ -43,10 +43,20 @@ try {
     await page.setViewportSize({width:1440,height:1000});
     await page.emulateMedia({reducedMotion:'no-preference'});
   }
-  await page.getByRole('tab',{name:/Trademark/}).click();
-  await page.getByRole('button',{name:'Read more about Trademark'}).click();
-  await expect(page.getByRole('dialog').locator('.mg-trademark-figure')).toBeVisible();
-  await page.keyboard.press('Escape');
+  for(const [title,kind] of [['Patent','patent'],['Trademark','trademark'],['Copyright','rights']]){
+    await page.getByRole('tab',{name:new RegExp(title)}).click();
+    const trigger=page.getByRole('button',{name:`Read more about ${title}`});
+    await trigger.click();
+    await expect(page.getByRole('dialog').locator(`.mg-${kind}-figure`)).toBeVisible();
+    await page.getByRole('dialog').screenshot({path:`test-results/modal-${kind}-desktop.png`});
+    await page.setViewportSize({width:390,height:844});
+    await expect(page.getByRole('dialog').locator(`.mg-${kind}-figure`)).toBeVisible();
+    assert.equal(await page.getByRole('dialog').evaluate(el=>el.scrollWidth>el.clientWidth),false);
+    await page.getByRole('dialog').screenshot({path:`test-results/modal-${kind}-mobile.png`});
+    await page.keyboard.press('Escape');
+    await expect(trigger).toBeFocused();
+    await page.setViewportSize({width:1440,height:1000});
+  }
   assert.deepEqual(errors,[]);
   console.log('Three service mechanisms: idle motion, pause, keyboard/pointer input, printed ink, responsive layout, reactive reduced motion, and retained trademark artwork passed.');
 }finally{await browser.close();}

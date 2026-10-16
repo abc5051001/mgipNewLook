@@ -473,6 +473,17 @@
 .mg-contact-caution{font-family:var(--mg-serif);font-size:20px;font-weight:400;font-optical-sizing:auto;line-height:1.7;letter-spacing:0}
 .mg-career-principles p{font-size:19px;line-height:1.65}
 .mg-benefit-copy p{font-family:var(--mg-sans);font-size:17px;font-weight:400;line-height:1.75;letter-spacing:0;opacity:1}
+.mg-benefit-card{cursor:pointer}
+.mg-benefit-card .mg-benefit-decoration,.mg-benefit-card:hover .mg-benefit-decoration{opacity:.2;transform:rotate(var(--benefit-angle,0deg));transition:none}
+.mg-benefit-decoration i{border-width:1.2px}
+.mg-benefit-replay{position:absolute;inset:0;z-index:3;width:100%;height:100%;border:0;background:transparent;color:inherit;cursor:pointer}
+.mg-benefit-replay:focus-visible{outline:2px solid currentColor;outline-offset:-5px}
+.mg-patent-figure{width:100%;max-width:230px;margin:auto;perspective:900px;color:#52758f}
+.mg-patent-figure svg{display:block;width:100%;height:auto;transform-style:preserve-3d}
+.mg-patent-diagram-top{animation:mg-patent-diagram 8s ease-in-out infinite paused}
+.mg-patent-figure[data-active=true] .mg-patent-diagram-top{animation-play-state:running}
+@keyframes mg-patent-diagram{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@media(prefers-reduced-motion:reduce){.mg-benefit-card .mg-benefit-decoration{transform:rotate(var(--benefit-angle,0deg))!important;opacity:.2!important}}
 .mg-footer-structured .mg-footer-office>p{font-family:var(--mg-serif);font-size:18px;line-height:1.65}
 @media(max-width:600px){
   .mg-about-grid>p,.mg-service-preview .mg-practice-copy>p,.mg-service-dialog-intro>div>p,.mg-service-details p,.mg-careers-grid>div>p,.mg-careers-panel>p,.mg-bio-section>p,.mg-contact-caution{font-size:19px}
