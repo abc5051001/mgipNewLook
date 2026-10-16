@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
 import { teamMembers } from '../../lib/team';
 import { legalService, pageMetadata, siteUrl, firmName } from '../../lib/seo';
-import { homeImage, homeSrcSet, homeSizes } from '../../lib/images';
+import { homeImage, homeSrcSet, homeSizes, portraitMedia, landscapeMedia, portraitSrcSet } from '../../lib/images';
 
 export default function SiteMetadata() {
   const { pathname } = useLocation();
@@ -16,7 +16,8 @@ export default function SiteMetadata() {
     <meta name="description" content={metadata.description}/>
     <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow'}/>
     {metadata.canonical && <link rel="canonical" href={metadata.canonical}/>}
-    {pathname === '/' && <link rel="preload" as="image" href={homeImage} imageSrcSet={homeSrcSet} imageSizes={homeSizes} fetchpriority="high"/>}
+    {pathname === '/' && <link rel="preload" as="image" href={homeImage} imageSrcSet={homeSrcSet} imageSizes={homeSizes} media={landscapeMedia} fetchpriority="high"/>}
+    {pathname === '/' && <link rel="preload" as="image" href="/media/washington-portrait-800.webp" imageSrcSet={portraitSrcSet} imageSizes="100vw" media={portraitMedia} fetchpriority="high"/>}
     <meta property="og:type" content="website"/><meta property="og:site_name" content={firmName}/>
     <meta property="og:title" content={metadata.title}/><meta property="og:description" content={metadata.description}/>
     <meta property="og:url" content={metadata.canonical || `${siteUrl}/`}/>
