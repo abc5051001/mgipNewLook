@@ -4,6 +4,7 @@ export function isPreviewBuild(env = process.env) {
 
 export function previewOrigin(env = process.env) {
   if (!isPreviewBuild(env)) return '';
-  const url = env.DEPLOY_PRIME_URL || env.URL;
+  const branchPreview = ['deploy-preview', 'branch-deploy'].includes(env.CONTEXT);
+  const url = branchPreview ? env.DEPLOY_PRIME_URL || env.URL : env.URL || env.DEPLOY_PRIME_URL;
   return url ? new URL(url).origin : '';
 }
