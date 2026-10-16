@@ -1,0 +1,102 @@
+import { chromium, expect } from '@playwright/test';
+import assert from 'node:assert/strict';
+
+const base=process.env.BASE_URL||'http://127.0.0.1:5174';
+const browser=await chromium.launch({executablePath:process.env.CHROME_PATH||'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true});
+try {
+  const page=await browser.newPage({viewport:{width:1440,height:1000},reducedMotion:'reduce'});
+  const errors=[];page.on('pageerror',error=>errors.push(error.message));
+  const heights=[];
+  for(const path of ['/team','/careers','/contact','/disclaimer']){
+    await page.goto(base+path,{waitUntil:'networkidle'});
+    const hero=page.locator('.mg-inner-hero');
+    heights.push((await hero.boundingBox()).height);
+    const aligned=await hero.evaluate(el=>{
+      const h1=el.querySelector('h1').getBoundingClientRect();
+      const shell=el.querySelector('.mg-shell').getBoundingClientRect();
+      return Math.abs(h1.left-shell.left)<1;
+    });
+    assert.ok(aligned,'All inner hero headings should align with the left content edge.');
+  }
+  assert.ok(Math.max(...heights)-Math.min(...heights)<1,'Desktop inner heroes should have the same height.');
+  await page.goto(base);
+  const header=page.locator('.mg-header');
+  await expect(header).toHaveAttribute('data-scrolled','false');
+  await expect(header).toHaveCSS('background-color','rgba(0, 0, 0, 0)');
+  const firstScreen=await page.locator('.mg-home-photo-hero').boundingBox();
+  assert.equal(firstScreen.y,0,'The photograph should begin behind the transparent navigation.');
+  const expandedHeight=(await header.boundingBox()).height;
+  await page.getByRole('link',{name:'Scroll to About Our Firm',exact:true}).click();
+  await expect.poll(()=>page.evaluate(()=>scrollY)).toBeGreaterThan(0);
+  await expect(header).toHaveAttribute('data-scrolled','true');
+  await expect(header).toHaveCSS('background-color','rgb(252, 253, 255)');
+  assert.ok((await header.boundingBox()).height<expandedHeight,'The navbar should become compact after scrolling.');
+  await page.getByRole('link',{name:'MG-IP home',exact:true}).click();
+  await expect.poll(()=>page.evaluate(()=>scrollY)).toBe(0);
+  await expect(header).toHaveAttribute('data-scrolled','false');
+  await expect(header).toHaveCSS('background-color','rgba(0, 0, 0, 0)');
+  assert.equal((await header.boundingBox()).height,expandedHeight,'The full navbar height should return at the top.');
+  const mainNav=page.getByRole('navigation',{name:'Main navigation'});
+  const teamLink=mainNav.getByRole('link',{name:'Team',exact:true});
+  const underlineScale=link=>link.locator('.mg-nav-underline').evaluate(el=>new DOMMatrix(getComputedStyle(el).transform).m11);
+  await expect.poll(()=>underlineScale(mainNav.getByRole('link',{name:'About',exact:true}))).toBe(1);
+  await expect.poll(()=>underlineScale(teamLink)).toBe(0);
+  await teamLink.hover();await expect.poll(()=>underlineScale(teamLink)).toBe(1);
+  await page.mouse.move(5,500);await expect.poll(()=>underlineScale(teamLink)).toBe(0);
+  await mainNav.getByRole('link',{name:'About',exact:true}).focus();await page.keyboard.press('Tab');
+  await expect(teamLink).toBeFocused();await expect.poll(()=>underlineScale(teamLink)).toBe(1);
+  await page.keyboard.press('Tab');await expect.poll(()=>underlineScale(teamLink)).toBe(0);
+  await mainNav.getByRole('link',{name:'Careers',exact:true}).click();
+  await expect(mainNav.getByRole('link',{name:'Careers',exact:true})).toHaveAttribute('aria-current','page');
+  await expect.poll(()=>underlineScale(mainNav.getByRole('link',{name:'Careers',exact:true}))).toBe(1);
+  await page.getByRole('link',{name:'MG-IP home',exact:true}).click();
+  const colors=await page.locator('.mg-original-stats>.mg-stat').evaluateAll(elements=>elements.map(el=>getComputedStyle(el).backgroundColor));
+  assert.equal(new Set(colors).size,4);
+  await expect(page.locator('.mg-original-stats .mg-stat svg')).toHaveCount(0);
+  await expect(page.locator('.mg-original-stats>.mg-hero-linework')).toHaveCount(0);
+
+  for(const [width,height] of [[320,568],[390,844],[600,900],[720,1000],[1440,900],[1920,1080]]){
+    await page.setViewportSize({width,height});await page.goto(base);
+    const hero=await page.locator('.mg-home-photo-hero').boundingBox();
+    assert.ok(hero.height>=height,'The photo hero should fill the initial viewport.');
+    assert.equal(hero.y,0,'The photograph should extend behind the transparent navbar.');
+    const about=await page.locator('.mg-about-grid h2').boundingBox();
+    assert.ok(about.y>=hero.y+hero.height,'The About heading should follow the photo hero.');
+    await expect(page.getByRole('link',{name:'Learn More',exact:true})).toBeInViewport();
+    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
+  }
+  await page.setViewportSize({width:390,height:844});await page.goto(base);
+  await page.emulateMedia({reducedMotion:'no-preference'});
+  const open=page.getByRole('button',{name:'Open navigation',exact:true});
+  const dropdown=page.locator('#mobile-navigation');
+  await open.click();
+  const close=page.getByRole('button',{name:'Close navigation',exact:true});
+  await expect(close).toHaveAttribute('aria-expanded','true');
+  await expect(header).toHaveAttribute('data-menu-open','true');
+  await expect(header).toHaveCSS('background-color','rgb(252, 253, 255)');
+  await expect(page.getByRole('navigation',{name:'Mobile navigation'})).toBeVisible();
+  await expect(page.getByRole('dialog')).toHaveCount(0);
+  await expect(dropdown).toHaveCSS('opacity','1');
+  const bounds=await dropdown.boundingBox(),headerBounds=await page.locator('.mg-nav-inner').boundingBox();
+  assert.ok(Math.abs(bounds.y-(headerBounds.y+headerBounds.height+1))<2,'Dropdown should open directly below the navbar.');
+  assert.ok(bounds.height<400,'Navigation should remain a compact dropdown.');
+  assert.notEqual(await page.locator('body').evaluate(el=>getComputedStyle(el).overflow),'hidden');
+  await page.keyboard.press('Tab');
+  await expect(page.getByRole('navigation',{name:'Mobile navigation'}).getByRole('link',{name:'About'})).toBeFocused();
+  await page.keyboard.press('Escape');await expect(open).toBeFocused();
+  await expect(dropdown).toHaveAttribute('inert','');
+  await expect(dropdown).toHaveCSS('height','0px');
+  await open.click();await expect(dropdown).toHaveCSS('opacity','1');
+  await page.mouse.click(380,700);await expect(open).toHaveAttribute('aria-expanded','false');
+  await open.click();await page.getByRole('navigation',{name:'Mobile navigation'}).getByRole('link',{name:'Team',exact:true}).click();
+  await expect(page).toHaveURL(base+'/team');await expect(open).toHaveAttribute('aria-expanded','false');
+  await open.click();await page.setViewportSize({width:1440,height:1000});
+  await expect(dropdown).toHaveAttribute('aria-hidden','true');
+  await page.setViewportSize({width:390,height:844});await expect(open).toHaveAttribute('aria-expanded','false');
+  await open.click();await expect(dropdown).toHaveCSS('opacity','1');
+  const last=page.getByRole('navigation',{name:'Mobile navigation'}).getByRole('link',{name:'Contact Us',exact:true});
+  await last.focus();await page.keyboard.press('Tab');
+  await expect(open).toHaveAttribute('aria-expanded','false');
+  assert.deepEqual(errors,[]);
+  console.log('Matched inner hero heights, retained scrolling header, colored count-up cards, original photo hero and mobile dropdown interactions passed.');
+} finally {await browser.close();}

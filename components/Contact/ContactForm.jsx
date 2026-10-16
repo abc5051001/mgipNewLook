@@ -1,9 +1,9 @@
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { Label } from "../ui/label";
 import { Button } from "../ui/button";
-import { Select } from "../ui/select";
+import SelectMenu from "../modern/SelectMenu";
 import { CheckCircle2, AlertCircle } from "lucide-react";
 import { useState } from "react";
 import { cn } from "../../lib/utils";
@@ -17,8 +17,9 @@ const ContactForm = () => {
     register,
     handleSubmit,
     reset,
+    control,
     formState: { errors },
-  } = useForm();
+  } = useForm({ defaultValues: { title: '' } });
 
   const onSubmit = async (data, e) => {
     e.preventDefault();
@@ -26,11 +27,13 @@ const ContactForm = () => {
     setError(false);
     const formData = new FormData(e.target);
     try {
-      await fetch("/", {
+      if (import.meta.env.DEV || import.meta.env.VITE_PREVIEW_BUILD) throw new Error('Contact delivery is unavailable in review preview.');
+      const response = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams(formData).toString(),
       });
+      if (!response.ok) throw new Error('Message delivery failed.');
       setSubmitted(true);
       reset();
     } catch {
@@ -73,13 +76,7 @@ const ContactForm = () => {
       {/* Title */}
       <div className="space-y-1.5">
         <Label htmlFor="title">Title (Optional)</Label>
-        <Select id="title" name="title" {...register("title")}>
-          <option value="">Select…</option>
-          <option value="Mr">Mr</option>
-          <option value="Ms">Ms</option>
-          <option value="Mrs">Mrs</option>
-          <option value="Dr">Dr</option>
-        </Select>
+        <Controller name="title" control={control} render={({ field }) => <SelectMenu id="title" label="Title (Optional)" name={field.name} value={field.value} onChange={field.onChange} onBlur={field.onBlur} buttonRef={field.ref} options={[{value:'',label:'Select…'},...['Mr','Ms','Mrs','Dr'].map(value=>({value,label:value}))]}/>}/>
       </div>
 
       {/* Name row */}

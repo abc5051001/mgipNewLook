@@ -1,0 +1,262 @@
+{
+  "hero": {
+    "eyebrow": "Intellectual Property Law · Washington, D.C. Metro Area",
+    "title": "Muncy, Geissler, Olds & Lowe, P.C.",
+    "description": "An Intellectual Property Firm in the Washington, D.C. Metro Area, specializing in Engineering, Science, and Legal Expertise."
+  },
+  "about": {
+    "eyebrow": "About Our Firm",
+    "title": "Advancing Innovation Through IP Excellence",
+    "description": "Founded in 2006, Muncy, Geissler, Olds & Lowe, PC is a top intellectual property law firm in the Washington, D.C. area. We provide high-quality, efficient IP services for both domestic and international clients, leveraging a multilingual team with deep expertise in science, technology, and law. Committed to advancing our clients' innovations, we offer tailored solutions to meet diverse industry challenges and adapt to the evolving IP landscape."
+  },
+  "services": [
+    {
+      "title": "Patent",
+      "description": "Patents are granted for inventions that are novel, non-obvious, and useful — covering new processes, machines, manufactures, compositions of matter, and improvements thereof.",
+      "details": [
+        {
+          "heading": "Application Drafting",
+          "body": "Our skilled professionals draft high-quality patent applications that accurately describe your inventions, maximizing approval likelihood."
+        },
+        {
+          "heading": "Office Action Responses",
+          "body": "Strategic guidance and expert responses to patent examiner objections, advocating effectively for your application's approval."
+        },
+        {
+          "heading": "Portfolio Management",
+          "body": "Comprehensive management services including deadline monitoring, portfolio expansion evaluation, and IP asset optimization."
+        }
+      ]
+    },
+    {
+      "title": "Trademark",
+      "description": "A trademark is a distinctive sign used to identify and distinguish goods or services — encompassing words, names, logos, slogans, symbols, designs, colors, sounds, and more.",
+      "details": [
+        {
+          "heading": "Search & Clearance",
+          "body": "Thorough trademark searches assessing availability and registrability, identifying potential conflicts to minimize infringement risk."
+        },
+        {
+          "heading": "Application Filing",
+          "body": "Preparation and filing of trademark applications ensuring compliance with all legal requirements for successful registration."
+        },
+        {
+          "heading": "Monitoring & Enforcement",
+          "body": "Proactive monitoring services safeguarding your trademarks against unauthorized use, with enforcement strategies to protect your brand."
+        }
+      ]
+    },
+    {
+      "title": "Copyright",
+      "description": "Copyright grants exclusive rights to creators of original works — protecting literary, artistic, musical, and dramatic works, as well as software code and architectural designs.",
+      "details": [
+        {
+          "heading": "Registration",
+          "body": "Registering your original works with copyright offices, providing the strongest available legal protection and enforcement rights."
+        },
+        {
+          "heading": "Licensing & Agreements",
+          "body": "Drafting and negotiating copyright licenses, assignments, and agreements to monetize your copyrights while safeguarding your interests."
+        },
+        {
+          "heading": "Digital Rights Management",
+          "body": "Guidance on DRM strategies to control distribution and access to digital content, mitigating unauthorized copying and exploitation."
+        }
+      ]
+    }
+  ],
+  "features": [
+    {
+      "title": "Global Reach",
+      "description": "Serving corporations, mid-sized businesses, start-ups, and universities globally with tailored IP strategies."
+    },
+    {
+      "title": "Prime Location",
+      "description": "Located in the D.C. metro area, minutes from the USPTO — providing convenient and timely support."
+    },
+    {
+      "title": "Technical Expertise",
+      "description": "Attorneys with technical and scientific backgrounds, many with prior experience as USPTO patent examiners."
+    },
+    {
+      "title": "Cost-Effective",
+      "description": "Committed to delivering top-quality work with efficiency and cost-effectiveness for exceptional results."
+    },
+    {
+      "title": "Swift Protection",
+      "description": "Focused on securing intellectual property protection quickly and affordably for our clients."
+    },
+    {
+      "title": "Multilingual",
+      "description": "Multilingual proficiency supporting the IP needs of global businesses: English, Español, Deutsch, Italiano, Русский, 繁體中文, 简体中文, 日本語, 한국인."
+    }
+  ],
+  "milestones": [
+    {
+      "year": "2006",
+      "title": "A Year of Beginnings",
+      "events": [
+        "Firm founded by Martin Geissler and Mark Olds",
+        "Scott Lowe joins as Principal Shareholder"
+      ]
+    },
+    {
+      "year": "2008",
+      "title": "Growth & Expansion",
+      "events": [
+        "Firm relocates to Fairfax County, Virginia",
+        "Joe (Ken) Muncy joins as Principal Shareholder"
+      ]
+    },
+    {
+      "year": "2010",
+      "title": "New Leadership",
+      "events": [
+        "John Ciccozzi joins the leadership team as Principal Shareholder"
+      ]
+    },
+    {
+      "year": "2013",
+      "title": "Expanding the Team",
+      "events": [
+        "Daniel Podhajny joins the leadership team as Principal Shareholder"
+      ]
+    },
+    {
+      "year": "2016",
+      "title": "10 Years of Excellence",
+      "events": [
+        "Celebrating a decade of service",
+        "Trademark department proudly expands"
+      ]
+    },
+    {
+      "year": "2021",
+      "title": "New Principals",
+      "events": [
+        "Scott M. Tulino joins the leadership team as Principal Shareholder",
+        "Aaron J. Sanders joins the leadership team as Principal Shareholder"
+      ]
+    },
+    {
+      "year": "2022",
+      "title": "Alexandria, VA",
+      "events": [
+        "Firm relocates to Alexandria, VA",
+        "Conveniently located near the USPTO"
+      ]
+    },
+    {
+      "year": "2026",
+      "title": "New Leadership",
+      "events": [
+        "H. David Starr, Leo V. Gureff, Rebeccah Gan, and Adesh Bhargava join the leadership team as Principal Shareholders"
+      ]
+    }
+  ],
+  "stats": [
+    {
+      "value": "2006",
+      "label": "Year Founded"
+    },
+    {
+      "value": "60+",
+      "label": "Professionals"
+    },
+    {
+      "value": "9+",
+      "label": "Languages Spoken"
+    },
+    {
+      "value": "8",
+      "label": "Minutes Away from USPTO"
+    }
+  ],
+  "cta": {
+    "title": "Ready to Protect Your Innovation?",
+    "description": "Our team of experienced IP professionals is ready to help you navigate the complex landscape of intellectual property law."
+  },
+  "team": {
+    "eyebrow": "Our Professionals",
+    "title": "Meet the Team",
+    "subtitle": "A diverse group of IP attorneys, patent agents, and technical advisors committed to protecting your innovations."
+  },
+  "careers": {
+    "hero": {
+      "eyebrow": "Join Our Team",
+      "title": "Career Opportunities",
+      "subtitle": "We welcome talented individuals eager to contribute to a dynamic intellectual property law practice."
+    },
+    "title": "Why Work With Us?",
+    "paragraphs": [
+      "At Muncy, Geissler, Olds & Lowe PC, we welcome inquiries from motivated candidates with a passion for learning, a strong work ethic, and an interest in the dynamic fields of patent, trademark, and copyright law.",
+      "As an equal opportunity employer, we offer a comprehensive benefits package and a clear path for professional growth in a firm that has been a leader in IP law since 2006."
+    ],
+    "perks": [
+      {
+        "title": "Collaborative Culture",
+        "desc": "Work alongside top legal and technical professionals in a collegial environment."
+      },
+      {
+        "title": "IP Focus",
+        "desc": "Deepen your expertise in Patent, Trademark, and Copyright law from day one."
+      },
+      {
+        "title": "Technical Innovation",
+        "desc": "Engage with cutting-edge inventions across engineering, software, biotech, and more."
+      },
+      {
+        "title": "Comprehensive Benefits",
+        "desc": "We offer a competitive compensation package and equal opportunity employment."
+      }
+    ],
+    "openTitle": "Open Positions",
+    "openDescription": "View all current openings and apply through our recruiting portal.",
+    "roles": [
+      "Patent Prosecution (Electrical / Mechanical)",
+      "Trademark Associates",
+      "Technical Advisors",
+      "Administrative & Support Staff"
+    ]
+  },
+  "contact": {
+    "hero": {
+      "eyebrow": "Get In Touch",
+      "title": "Contact Us",
+      "subtitle": "Have a question about protecting your intellectual property? Our team is ready to help."
+    },
+    "details": [
+      {
+        "label": "Office",
+        "lines": [
+          "125 S Royal St",
+          "Alexandria, VA 22314"
+        ],
+        "href": "https://maps.google.com/?q=Muncy+Geissler+Olds+Lowe+Alexandria+VA"
+      },
+      {
+        "label": "Phone",
+        "lines": [
+          "+1 (703) 621-7140"
+        ],
+        "href": "tel:+17036217140"
+      },
+      {
+        "label": "Email",
+        "lines": [
+          "mailroom@mg-ip.com"
+        ],
+        "href": "mailto:mailroom@mg-ip.com"
+      },
+      {
+        "label": "LinkedIn",
+        "lines": [
+          "Muncy, Geissler, Olds & Lowe"
+        ],
+        "href": "https://www.linkedin.com/company/muncy-geissler-olds-&-lowe/",
+        "external": true
+      }
+    ],
+    "formDescription": "Fill out the form below and we'll get back to you promptly."
+  }
+}

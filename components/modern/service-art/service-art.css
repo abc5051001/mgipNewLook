@@ -1,0 +1,17 @@
+.mg-machine-placeholder{width:100%;aspect-ratio:600/390}
+.mg-service-machine,.mg-service-machine.mg-drafting-figure{position:relative;width:100%;max-width:600px;margin:0 auto;border:0;background:transparent;color:var(--mg-muted)}
+.mg-service-machine.iso[data-theme="light"]{--anatomy-paper:#f3f6f9;--anatomy-top:#f9fbfd;--anatomy-face:#fff;--anatomy-shade-0:#c8d4df;--anatomy-shade-1:#d4dee7;--anatomy-shade-2:#e2e9ef;--anatomy-shade-3:#edf2f6;--anatomy-lit-top:#fff;--anatomy-lit-shade:#d4e1ed;--anatomy-hi:#426580;--anatomy-mid:#7c94a8;--anatomy-lo:#adbdca;--anatomy-faint:#d1dce6;--anatomy-lit:#173f5e;--anatomy-dot:#46657e;--anatomy-halo:#7890a2;--anatomy-halo-opacity:.19;--anatomy-weight:.7px}
+.mg-trademark-machine.iso[data-theme="light"]{--anatomy-hi:#6a5c7b;--anatomy-mid:#9a8daa;--anatomy-lo:#bfb7cc;--anatomy-shade-0:#d2cbdc;--anatomy-shade-1:#dfdae6;--anatomy-shade-2:#e9e5ee;--anatomy-shade-3:#f0edf5;--anatomy-lit:#49405e;--anatomy-lit-shade:#ded7e8}
+.mg-copyright-machine.iso[data-theme="light"]{--anatomy-hi:#426c6a;--anatomy-mid:#7d9a97;--anatomy-lo:#acc5c1;--anatomy-shade-0:#cadbd7;--anatomy-shade-1:#d6e3df;--anatomy-shade-2:#e3ece9;--anatomy-shade-3:#eef4f1;--anatomy-lit:#2b5352;--anatomy-lit-shade:#d9e8e2}
+.mg-service-machine .iso-svg{display:block;width:100%;height:auto;overflow:hidden}
+.mg-service-machine .iso-face-text{fill:var(--anatomy-hi);font-family:var(--mg-mono)}
+.mg-service-machine .mg-machine-stage,.mg-service-machine .mg-drafting-stage{touch-action:pan-y;cursor:ew-resize;overflow:hidden}
+.mg-service-machine .mg-machine-controls{position:absolute;right:2px;bottom:2px;display:flex;justify-content:end}
+.mg-machine-controls button{width:40px;height:40px;display:grid;place-items:center;border:1px solid #b6c5d280;background:#ffffff90;color:var(--mg-ink);transition:background .2s}
+.mg-machine-controls button:hover{background:#fff}
+.mg-service-dialog-illustrated{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);align-items:center;gap:24px}
+.mg-service-dialog-intro>div>p{font-size:18px;line-height:1.8;color:var(--mg-muted)}
+.mg-dialog-visual{width:100%;max-width:230px;justify-self:end}
+.mg-dialog-visual .mg-trademark-figure,.mg-dialog-visual .mg-rights-figure{max-width:230px}
+@media(max-width:600px){.mg-service-machine,.mg-service-machine.mg-drafting-figure{max-width:440px}.mg-service-machine .mg-drafting-stage .iso-svg{width:100%;max-width:100%;margin:0}.mg-machine-controls button{width:40px;height:40px}.mg-service-dialog-illustrated{grid-template-columns:1fr;gap:10px}.mg-dialog-visual{justify-self:center;max-width:180px}.mg-service-dialog-intro>div>p{font-size:17px}}
+@media(prefers-reduced-motion:reduce){.mg-service-machine *{animation:none!important;transition:none!important}}

@@ -1,0 +1,52 @@
+import { chromium, expect } from '@playwright/test';
+import assert from 'node:assert/strict';
+const base=process.env.BASE_URL||'http://127.0.0.1:5174';
+const browser=await chromium.launch({executablePath:process.env.CHROME_PATH||'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true});
+try {
+  const page=await browser.newPage({viewport:{width:1440,height:1000}});
+  const errors=[];
+  page.on('pageerror',error=>errors.push(error.message));
+  await page.goto(base,{waitUntil:'networkidle'});
+  for(const [index,kind] of ['patent','trademark','copyright'].entries()){
+    await page.getByRole('tab').nth(index).click();
+    const figure=page.locator(`.mg-${kind}-machine`),stage=figure.getByRole('slider');
+    await figure.scrollIntoViewIfNeeded();
+    await expect(figure).toHaveAttribute('data-active','true');
+    const start=await stage.getAttribute('data-progress');
+    await expect.poll(()=>stage.getAttribute('data-progress')).not.toBe(start);
+    await figure.getByRole('button',{name:'Pause illustration'}).click();
+    const stopped=await stage.getAttribute('data-progress');
+    await page.waitForTimeout(200);
+    assert.equal(await stage.getAttribute('data-progress'),stopped);
+    await stage.focus();await page.keyboard.press('End');
+    await expect(stage).toHaveAttribute('data-progress','1.0000');
+    if(kind==='trademark')await expect(figure.locator('[data-stamp-mark]')).toHaveAttribute('opacity','1.0000');
+    if(kind==='copyright')await expect.poll(()=>figure.locator('[data-writing-glyph]').evaluateAll(items=>items.every(item=>item.getAttribute('opacity')==='1'))).toBe(true);
+    await page.keyboard.press('Home');
+    await expect(stage).toHaveAttribute('data-progress','0.0000');
+    if(kind==='copyright')await expect.poll(()=>figure.locator('[data-writing-glyph]').evaluateAll(items=>items.every(item=>item.getAttribute('opacity')==='0'))).toBe(true);
+    await page.keyboard.press('ArrowRight');
+    await expect.poll(async()=>Number(await stage.getAttribute('data-progress'))).toBeGreaterThan(0);
+    await stage.hover({position:{x:250,y:130}});
+    await expect.poll(async()=>Number(await stage.getAttribute('data-progress'))).toBeGreaterThan(.1);
+    await expect(figure.locator('figcaption')).toHaveClass('sr-only');
+    for(const box of await figure.locator('[data-readout]').evaluateAll(items=>items.map(item=>item.getBoundingClientRect().width)))assert.ok(box<=1,'Compact readouts should remain screen-reader only.');
+    await page.emulateMedia({reducedMotion:'reduce'});
+    await expect(stage).toHaveAttribute('data-progress','1.0000');
+    await stage.focus();await page.keyboard.press('Home');
+    await expect(stage).toHaveAttribute('data-progress','0.0000');
+    await page.keyboard.press('End');
+    await page.getByRole('tabpanel').screenshot({path:`test-results/service-${kind}-desktop.png`});
+    await page.setViewportSize({width:390,height:844});
+    await page.getByRole('tabpanel').screenshot({path:`test-results/service-${kind}-mobile.png`});
+    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
+    await page.setViewportSize({width:1440,height:1000});
+    await page.emulateMedia({reducedMotion:'no-preference'});
+  }
+  await page.getByRole('tab',{name:/Trademark/}).click();
+  await page.getByRole('button',{name:'Read more about Trademark'}).click();
+  await expect(page.getByRole('dialog').locator('.mg-trademark-figure')).toBeVisible();
+  await page.keyboard.press('Escape');
+  assert.deepEqual(errors,[]);
+  console.log('Three service mechanisms: idle motion, pause, keyboard/pointer input, printed ink, responsive layout, reactive reduced motion, and retained trademark artwork passed.');
+}finally{await browser.close();}

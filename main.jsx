@@ -1,10 +1,14 @@
 import React from 'react'
-import ReactDOM from 'react-dom/client'
+import { createRoot, hydrateRoot } from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
+import './lib/identity-redirect'
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+const root = document.getElementById('root');
+const application = (
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);
+if (root.dataset.prerendered === 'true') hydrateRoot(root, application);
+else createRoot(root).render(application);
