@@ -1,12 +1,15 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
-import { isPreviewBuild } from './tools/build-environment.mjs';
+import { isPreviewBuild, previewOrigin } from './tools/build-environment.mjs';
 
 export default defineConfig({
   base: "/",
   plugins: [react()],
-  define: { 'import.meta.env.VITE_PREVIEW_BUILD': JSON.stringify(isPreviewBuild()) },
+  define: {
+    'import.meta.env.VITE_PREVIEW_BUILD': JSON.stringify(isPreviewBuild()),
+    'import.meta.env.VITE_PREVIEW_ORIGIN': JSON.stringify(previewOrigin()),
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "."),

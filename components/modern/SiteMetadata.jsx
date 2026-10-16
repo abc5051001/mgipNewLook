@@ -8,6 +8,10 @@ export default function SiteMetadata() {
   const { pathname } = useLocation();
   const metadata = pageMetadata(pathname, teamMembers);
   const noindex = metadata.noindex || import.meta.env.VITE_PREVIEW_BUILD;
+  const previewOrigin = import.meta.env.VITE_PREVIEW_ORIGIN;
+  // Preview cards must open the review deployment, rather than the live firm site.
+  const pageUrl = previewOrigin ? `${previewOrigin}${metadata.path}` : metadata.canonical || `${siteUrl}/`;
+  const imageUrl = `${previewOrigin || siteUrl}/og-image.jpg`;
   const schema = metadata.member && metadata.member.name !== 'Mascot'
     ? [legalService, { '@context': 'https://schema.org', '@type': 'Person', name: metadata.member.name, url: metadata.canonical, jobTitle: metadata.member.title, worksFor: { '@id': `${siteUrl}/#firm` } }]
     : legalService;
@@ -15,16 +19,16 @@ export default function SiteMetadata() {
     <title>{metadata.title}</title>
     <meta name="description" content={metadata.description}/>
     <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow'}/>
-    {metadata.canonical && <link rel="canonical" href={metadata.canonical}/>}
+    {metadata.canonical && <link rel="canonical" href={pageUrl}/>}
     {pathname === '/' && <link rel="preload" as="image" href={homeImage} imageSrcSet={homeSrcSet} imageSizes={homeSizes} media={landscapeMedia} fetchpriority="high"/>}
     {pathname === '/' && <link rel="preload" as="image" href="/media/washington-portrait-800.webp" imageSrcSet={portraitSrcSet} imageSizes="100vw" media={portraitMedia} fetchpriority="high"/>}
     <meta property="og:type" content="website"/><meta property="og:site_name" content={firmName}/>
     <meta property="og:title" content={metadata.title}/><meta property="og:description" content={metadata.description}/>
-    <meta property="og:url" content={metadata.canonical || `${siteUrl}/`}/>
-    <meta property="og:image" content={`${siteUrl}/og-image.jpg`}/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/>
+    <meta property="og:url" content={pageUrl}/>
+    <meta property="og:image" content={imageUrl}/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/>
     <meta property="og:image:alt" content="The Jefferson Memorial framed by cherry blossoms in Washington, D.C."/>
     <meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content={metadata.title}/>
-    <meta name="twitter:description" content={metadata.description}/><meta name="twitter:image" content={`${siteUrl}/og-image.jpg`}/>
+    <meta name="twitter:description" content={metadata.description}/><meta name="twitter:image" content={imageUrl}/>
     <script type="application/ld+json">{JSON.stringify(schema).replace(/</g, '\\u003c')}</script>
   </Helmet>;
 }
