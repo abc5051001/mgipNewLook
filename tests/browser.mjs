@@ -129,7 +129,9 @@ try {
   await page.goto(base + '/careers');
   await expect(page.locator('.mg-careers-grid')).toBeVisible();
   const careerText=normalize(await page.locator('body').innerText());
-  for(const value of [...copy.careers.paragraphs,...copy.careers.perks.flatMap(perk=>[perk.title,perk.desc]),...copy.careers.roles])assert.ok(careerText.includes(value),'Career copy changed');
+  for(const value of [...copy.careers.paragraphs,...copy.careers.perks.flatMap(perk=>[perk.title,perk.desc])])assert.ok(careerText.includes(value),'Career copy changed');
+  const openings=JSON.parse(await readFile(new URL('../content/career-openings.json',import.meta.url),'utf8'));
+  for(const position of openings.positions)await expect(page.getByRole('link',{name:position.title+' '+position.location})).toHaveAttribute('href',position.url);
   await expect(page.locator('.mg-careers-terrain .mg-figure svg')).toBeVisible();
   await page.goto(base + '/contact');
   await expect(page.locator('iframe[title="Office Location"]')).toHaveCount(1);
