@@ -1,4 +1,5 @@
 import { Link, Navigate, useLocation, useParams } from 'react-router-dom';
+import { useSyncExternalStore } from 'react';
 import { ArrowLeft, ArrowRight, ArrowUpRight, Mail, Phone } from 'lucide-react';
 import { motion } from 'motion/react';
 import useReducedMotion from './useReducedMotion';
@@ -8,6 +9,9 @@ import MembershipInfo from './MembershipInfo';
 import HeroLinework from './HeroLinework';
 const labels={bar:'Bar admissions',education:'Education',memberships:'Professional memberships',experience:'Experience',field:'Areas of focus'};
 const sectionLabel=key=>labels[key]||displayTitle(key.replace(/([A-Z])/g,' $1'));
+const subscribe=()=>()=>{};
+const clientSnapshot=()=>true;
+const serverSnapshot=()=>false;
 
 function BiographyContent({type,items,membershipsData}) {
   if(type==='experience')return <div className="mg-bio-prose">{items.map((text,index)=><p key={index}>{text}</p>)}</div>;
@@ -34,9 +38,10 @@ function BiographySection({section,membershipsData}) {
 export default function BioPage({membershipsData}) {
   const {id}=useParams();
   const location=useLocation();
+  const clientReady=useSyncExternalStore(subscribe,clientSnapshot,serverSnapshot);
   const member=teamMembers.find(item=>String(item.id)===id);
   if(!member)return <Navigate to="/notfound" replace/>;
-  const list=location.state?.filteredMembers||sortMembers(teamMembers);
+  const list=(clientReady&&location.state?.filteredMembers)||sortMembers(teamMembers);
   const index=list.findIndex(item=>item.id===member.id);
   const keys=[...new Set(['bar','education','memberships','field',...Object.keys(member)])].filter(key=>key!=='experience'&&Array.isArray(member[key])&&member[key].length);
   const scalarKeys=Object.keys(member).filter(key=>!['id','name','firstName','middleName','lastName','email','phone','title','photo','experience'].includes(key)&&!Array.isArray(member[key])&&typeof member[key]==='string'&&member[key]);

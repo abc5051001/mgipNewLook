@@ -18,7 +18,7 @@ function DesktopNavLink({ label, to }) {
 
 export function NavBar() {
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(() => typeof window !== 'undefined' && window.scrollY > 48);
+  const [scrolled, setScrolled] = useState(false);
   const header = useRef(null);
   const toggle = useRef(null);
   const reduced = useReducedMotion();
