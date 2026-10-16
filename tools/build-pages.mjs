@@ -35,7 +35,8 @@ try {
   await writeFile(path.join(output, '_headers'), `/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n${indexing}\n/assets/*\n  Cache-Control: public, max-age=31536000, immutable\n\n/media/*\n  Cache-Control: public, max-age=3600, must-revalidate\n\n/admin/*\n  X-Robots-Tag: noindex, nofollow\n`);
   const indexable = routes.filter(route => route !== '/disclaimer');
   await writeFile(path.join(output, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${indexable.map(route => `  <url><loc>https://mg-ip.com${route}</loc></url>`).join('\n')}\n</urlset>\n`);
-  await writeFile(path.join(output, 'robots.txt'), `User-agent: *\nAllow: /\n${preview ? '' : '\nSitemap: https://mg-ip.com/sitemap.xml\n'}`);
+  const robots = await readFile(path.join(root, 'public/robots.txt'), 'utf8');
+  await writeFile(path.join(output, 'robots.txt'), preview ? robots.replace(/^Sitemap:.*(?:\r?\n|$)/gmi, '') : robots);
   if (preview) {
     const config = await readFile(path.join(output, 'admin/config.yml'), 'utf8');
     await writeFile(path.join(output, 'admin/config.yml'), config.replace(/  branch: main/, `  branch: ${process.env.BRANCH || 'review/mgip-modern'}`));

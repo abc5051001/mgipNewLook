@@ -1,4 +1,18 @@
 User-agent: *
 Allow: /
 
+# AI search crawlers and user-requested page retrieval.
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+Allow: /
+
+# Search indexes used by Google and Bing's AI search experiences.
+User-agent: Googlebot
+User-agent: bingbot
+Allow: /
+
 Sitemap: https://mg-ip.com/sitemap.xml
