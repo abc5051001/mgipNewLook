@@ -7,7 +7,7 @@ import copy from '../../content/firm-copy.json';
 import { teamMembers } from '../../lib/team';
 import CountUpStat from './CountUpStat';
 import BenefitCards from './BenefitCards';
-import HomeHero from './HomeHero';
+import PhotoHero from './photo-hero/PhotoHero';
 const ServiceDialog = lazy(() => import('./ServiceDialog'));
 
 const figureTypes = ['patent', 'trademark', 'copyright'];
@@ -28,7 +28,7 @@ export default function Home() {
   }
 
   return <>
-    <HomeHero/>
+    <PhotoHero/>
 
     <section className="mg-section mg-shell mg-about-original" id="about">
       <Reveal className="mg-about-grid"><div><span className="mg-eyebrow">{copy.about.eyebrow}</span><h2>Advancing Innovation{' '}<br/><span>Through IP Excellence</span></h2></div><p>{copy.about.description}</p></Reveal>

@@ -83,7 +83,7 @@ try{
   }
   await page.setViewportSize({width:390,height:844});await page.goto(base+'/');
   await expect(page.locator('.mg-home-photo-background')).toHaveCSS('position','absolute');
-  await expect(page.locator('.mg-home-scroll')).toBeVisible();
+  await expect(page.locator('.mh-contact')).toBeVisible();
   await expect(page.locator('.mg-hero-disciplines')).toHaveCount(0);
   await expect(page.getByRole('heading',{level:1})).toBeInViewport();
   await expect(page.getByRole('link',{name:'Learn More',exact:true})).toBeInViewport();

@@ -113,15 +113,12 @@
 @media(max-width:850px){.mg-header-classic .mg-nav-inner{gap:24px}.mg-header-classic .mg-wordmark{font-size:19px}.mg-header-classic .mg-nav{gap:23px;font-size:15px}}
 @media(max-width:720px){.mg-header-classic .mg-nav-inner{height:76px;gap:12px}.mg-header-classic .mg-wordmark{font-size:17px}.mg-header-classic .mg-nav{display:none}.mg-header-classic .mg-menu-button{display:grid;place-items:center;width:44px;height:44px;margin-left:auto}}
 
-/* The homepage header shifts from a transparent overlay to a compact white bar. */
+/* The homepage header shifts to the same white bar and spacing as other pages. */
 .mg-header-home{position:fixed;inset:0 0 auto;background:transparent;border-bottom-color:#ffffff30;color:#fff;transition:background-color .25s,color .25s,border-color .25s,box-shadow .25s}
 .mg-header-home .mg-nav-inner{transition:height .25s}
 .mg-header-home .mg-wordmark{color:inherit;transition:font-size .25s}
 .mg-header-home:not([data-scrolled=true]):not([data-menu-open=true]) :focus-visible{outline-color:#fff}
 .mg-header-home:is([data-scrolled=true],[data-menu-open=true]){background:#fcfdff;color:var(--mg-ink);border-bottom-color:var(--mg-line);box-shadow:0 4px 20px #172e4508}
-.mg-header-home[data-scrolled=true] .mg-nav-inner{height:72px}
-.mg-header-home[data-scrolled=true] .mg-wordmark{font-size:19px}
-@media(max-width:720px){.mg-header-home[data-scrolled=true] .mg-nav-inner{height:64px}.mg-header-home[data-scrolled=true] .mg-wordmark{font-size:17px}}
 @media(prefers-reduced-motion:reduce){.mg-header-home,.mg-header-home .mg-nav-inner,.mg-header-home .mg-wordmark{transition:none}}
 
 /* Original text navigation; Motion grows the underline from the left. */

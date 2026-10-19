@@ -21,7 +21,7 @@ try{
   const page=await browser.newPage({viewport:{width,height:900}}),errors=[];
   page.on('pageerror',error=>errors.push(error.message));
   await page.goto(base,{waitUntil:'networkidle'});
-  await page.getByRole('link',{name:'Scroll to About Our Firm',exact:true}).click();
+  await page.getByRole('link',{name:'Learn More',exact:true}).click();
   await expect.poll(()=>page.evaluate(()=>scrollY)).toBeGreaterThan(300);
   await returnToTop(page,page.getByRole('link',{name:'MG-IP home',exact:true}));
   const footer=page.locator('.mg-footer-logo');await footer.scrollIntoViewIfNeeded();

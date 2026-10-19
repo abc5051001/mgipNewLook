@@ -19,6 +19,7 @@ try {
     assert.ok(aligned,'All inner hero headings should align with the left content edge.');
   }
   assert.ok(Math.max(...heights)-Math.min(...heights)<1,'Desktop inner heroes should have the same height.');
+  const sharedHeaderHeight=(await page.locator('.mg-header').boundingBox()).height;
   await page.goto(base);
   const header=page.locator('.mg-header');
   await expect(header).toHaveAttribute('data-scrolled','false');
@@ -26,11 +27,11 @@ try {
   const firstScreen=await page.locator('.mg-home-photo-hero').boundingBox();
   assert.equal(firstScreen.y,0,'The photograph should begin behind the transparent navigation.');
   const expandedHeight=(await header.boundingBox()).height;
-  await page.getByRole('link',{name:'Scroll to About Our Firm',exact:true}).click();
+  await page.getByRole('link',{name:'Learn More',exact:true}).click();
   await expect.poll(()=>page.evaluate(()=>scrollY)).toBeGreaterThan(0);
   await expect(header).toHaveAttribute('data-scrolled','true');
   await expect(header).toHaveCSS('background-color','rgb(252, 253, 255)');
-  assert.ok((await header.boundingBox()).height<expandedHeight,'The navbar should become compact after scrolling.');
+  assert.equal((await header.boundingBox()).height,sharedHeaderHeight,'The scrolled About navbar should match the other pages.');
   await page.getByRole('link',{name:'MG-IP home',exact:true}).click();
   await expect.poll(()=>page.evaluate(()=>scrollY)).toBe(0);
   await expect(header).toHaveAttribute('data-scrolled','false');

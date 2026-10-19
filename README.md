@@ -46,7 +46,27 @@ Use `SITE_PREVIEW=true` when building a local review artifact and `EXPECT_PREVIE
 
 ## Motion
 
-The homepage restores the original full-width Washington, D.C. photograph with centered white copy, rectangular actions and a bottom scroll cue. A minimal local text shadow and solid action fills support readability without changing the photograph or its overlay. It adapts to narrow and short mobile viewports with a transparent-to-white scrolling header. The firm statistics use navy, pale blue, teal and lavender cards with subtle circular corner shapes, counting from zero each time they return to view; their final values remain available to screen readers and reduced-motion users. The benefits use six colored editorial cards with crisp sans-serif descriptions, retaining every original description.
+The About page at `/` uses the original Jefferson Memorial photograph with the
+firm name and Engineering / Science / Law at the lower left, the original
+paragraph at the right, and actions at the lower right. Manrope typography follows
+the SolarInsight reference. The rounded header tray has a 12px blur and light navy
+tint; its unboxed navlinks use the shared Mona Sans font. Scrolling restores the
+same navbar height, logo size, and spacing as Team, Careers, and Contact.
+
+Feathered masks support the desktop words without darkening the whole photograph.
+Mobile has no tint or local text masks, and its entire paragraph is white. That
+paragraph sits 35svh from the top; Contact Us aligns left beside an outlined Learn
+More action. Hero words have no shadows. The firm name and paragraph drop into
+place word by word and replay on return; the eyebrow, expertise line, and actions
+use the shared fade and rise. Reduced motion shows completed text immediately.
+Prerendered hero copy remains readable before hydration and without JavaScript.
+See `components/modern/photo-hero/DESIGN.md`; run `node tests/photo-hero.mjs` with
+the local server running for layout and entrance checks.
+
+The firm statistics use navy, pale blue, teal and lavender cards with subtle
+circular corner shapes, counting from zero each time they return to view. Their
+final values remain available to screen readers and reduced-motion users. The
+benefits use six colored editorial cards, retaining every original description.
 
 The homepage portrait mosaic includes every profile at the same size, alphabetically arranged. The Team hero uses restrained connected linework, with portraits appearing only in the directory on that page. The existing directory, filters and biography pages remain intact. Careers reuses the earlier interactive Hairline Terrain illustration, with explicit pause/play controls, separate from the service drafting instrument.
 
