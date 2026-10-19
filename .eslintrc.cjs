@@ -11,6 +11,17 @@ module.exports = {
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
   settings: { react: { version: '18.2' } },
   plugins: ['react-refresh'],
+  overrides: [
+    {
+      files: ['components/modern/BlueprintScene.jsx'],
+      rules: {
+        // React Three Fiber host elements use Three.js properties, not DOM attributes.
+        'react/no-unknown-property': ['error', {
+          ignore: ['args', 'geometry', 'position', 'rotation', 'transparent', 'wireframe'],
+        }],
+      },
+    },
+  ],
   rules: {
     'react/jsx-no-target-blank': 'off',
     'react-refresh/only-export-components': [

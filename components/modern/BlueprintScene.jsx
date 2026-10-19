@@ -1,5 +1,6 @@
 import { Component, Suspense, useEffect, useMemo, useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
+import PropTypes from 'prop-types';
 import { useInView } from 'motion/react';
 import useReducedMotion from './useReducedMotion';
 import * as THREE from 'three';
@@ -44,7 +45,7 @@ function CareerStructure({ reduced }) {
     if(signal.current)signal.current.position.copy(path.getPoint((clock.elapsedTime * .12) % 1));
   });
   return <group ref={root} rotation={[.18,-.4,0]} scale={1.3}>
-    {[-1,0,1].map((step,index)=><group key={step} position={[step*1.4,step*.65,0]}>
+    {[-1,0,1].map(step=><group key={step} position={[step*1.4,step*.65,0]}>
       <mesh geometry={box}><meshBasicMaterial color="#91aabd" transparent opacity={.12}/></mesh>
       <lineSegments geometry={edges}><lineBasicMaterial color="#628197"/></lineSegments>
       <mesh position={[0,.62,0]}><sphereGeometry args={[.15,16,12]}/><meshBasicMaterial color="#54758c" transparent opacity={.7}/></mesh>
@@ -61,3 +62,8 @@ export default function BlueprintScene({ career = false }) {
   const reduced = useReducedMotion();
   return <div ref={host} className="mg-blueprint" aria-hidden="true"><SceneBoundary><Suspense fallback={<BlueprintFallback/>}><Canvas camera={{ position: career?[4.2,2.8,6]:[4.8,3.4,6.5], fov: career?35:38 }} dpr={[1, 1.5]} frameloop={active && !reduced ? 'always' : 'demand'} gl={{ antialias: true, alpha: true }} fallback={<BlueprintFallback/>}>{career?<CareerStructure reduced={reduced}/>:<Structure reduced={reduced}/>}</Canvas></Suspense></SceneBoundary></div>;
 }
+
+SceneBoundary.propTypes = { children: PropTypes.node };
+Structure.propTypes = { reduced: PropTypes.bool.isRequired };
+CareerStructure.propTypes = { reduced: PropTypes.bool.isRequired };
+BlueprintScene.propTypes = { career: PropTypes.bool };
