@@ -53,8 +53,9 @@ the SolarInsight reference. The rounded header tray has a 12px blur and light na
 tint; its unboxed navlinks use the shared Mona Sans font. Scrolling restores the
 same navbar height, logo size, and spacing as Team, Careers, and Contact.
 
-Feathered masks support the desktop words without darkening the whole photograph.
-Mobile has no tint or local text masks, and its entire paragraph is white. That
+The photograph has a 22% tint on desktop and 18% on mobile. Feathered backdrop blur
+softens detail behind the desktop text with a light navy tint. Mobile relies on the overall photo tint,
+with no extra shading or blur behind its white paragraph or firm name. That
 paragraph sits 35svh from the top; Contact Us aligns left beside an outlined Learn
 More action. Hero words have no shadows. The firm name and paragraph drop into
 place word by word and replay on return; the eyebrow, expertise line, and actions
@@ -62,6 +63,12 @@ use the shared fade and rise. Reduced motion shows completed text immediately.
 Prerendered hero copy remains readable before hydration and without JavaScript.
 See `components/modern/photo-hero/DESIGN.md`; run `node tests/photo-hero.mjs` with
 the local server running for layout and entrance checks.
+
+The hero uses React Bits Cursor Grid: nearby square cells
+light up and the photo subtly brightens beneath a fine mouse pointer. The local
+text masks remain above the effect. Hover interaction is disabled on touch screens
+and for reduced motion.
+See `components/modern/photo-hero/tech/README.md` for upstream source and license.
 
 The firm statistics use navy, pale blue, teal and lavender cards with subtle
 circular corner shapes, counting from zero each time they return to view. Their

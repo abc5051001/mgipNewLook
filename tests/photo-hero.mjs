@@ -17,11 +17,22 @@ const held=async page=>{
 };
 try{
   const page=await browser.newPage({reducedMotion:'reduce'});
+  await page.addInitScript(()=>{
+    window.__heroDrawCounts=new WeakMap();
+    const draw=WebGL2RenderingContext.prototype.drawArrays;
+    WebGL2RenderingContext.prototype.drawArrays=function(...args){
+      window.__heroDrawCounts.set(this.canvas,(window.__heroDrawCounts.get(this.canvas)||0)+1);
+      return draw.apply(this,args);
+    };
+  });
   const errors=[];page.on('pageerror',error=>errors.push(error.message));
   for(const [width,height] of [[1920,1080],[1440,900],[1024,768],[768,1024],[490,1060],[390,844],[320,568],[736,414]]){
     await page.setViewportSize({width,height});
     await page.goto(base,{waitUntil:'networkidle'});
+    await page.evaluate(()=>document.fonts.ready);
     await held(page);
+    assert.ok(await page.locator('.mh-square-field canvas').evaluate(canvas=>canvas.width>0&&canvas.height>0));
+    await expect(page.locator('.mh-cursor-photo')).toHaveCSS('opacity','0');
     await expect(page.locator('h1')).toHaveCount(1);
     await expect(page.locator('.mh-eyebrow')).toHaveText(copy.hero.eyebrow);
     await expect(page.locator('.mh-disciplines')).toHaveText('Engineering/Science/Law');
@@ -30,10 +41,12 @@ try{
     assert.ok(await page.locator('.mh-poster img').evaluate(el=>el.complete&&el.naturalWidth>0));
     assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
     assert.equal(await page.locator('.mh-hero').evaluate(el=>getComputedStyle(el,'::before').backgroundImage),'none');
+    assert.equal(await page.locator('.mh-hero').evaluate(el=>getComputedStyle(el,'::before').backgroundColor),width<=720?'rgba(0, 0, 0, 0.18)':'rgba(0, 0, 0, 0.22)');
     for(const selector of ['h1','.mh-eyebrow','.mh-context-description','.mh-contact'])await expect(page.locator(selector)).toHaveCSS('text-shadow','none');
     if(width<=720){
       await expect(page.locator('.mh-context-description')).toHaveCSS('color','rgb(255, 255, 255)');
-      for(const selector of ['.mh-intro','.mh-context>div'])assert.equal(await page.locator(selector).evaluate(el=>getComputedStyle(el,'::before').content),'none');
+      assert.equal(await page.locator('.mh-intro').evaluate(el=>getComputedStyle(el,'::before').content),'none');
+      assert.equal(await page.locator('.mh-context>div').evaluate(el=>getComputedStyle(el,'::before').content),'none');
       const contact=await page.locator('.mh-actions .mg-button').boundingBox(),learn=await page.locator('.mh-contact').boundingBox();
       assert.ok(contact.x<learn.x&&contact.x+contact.width<=learn.x,'Contact Us stays left of Learn More');
       await expect(page.locator('.mh-contact')).toHaveCSS('border-top-width','1px');
@@ -45,11 +58,36 @@ try{
   await page.goto(base,{waitUntil:'domcontentloaded'});
   await expect.poll(()=>page.locator('.mh-title-word').evaluateAll(words=>words.some(word=>new DOMMatrix(getComputedStyle(word).transform).m42<-.5))).toBe(true);
   await held(page);
+  const signalField=page.locator('.mh-square-field');
+  await expect(signalField).toHaveAttribute('data-active','true');
+  await page.mouse.move(820,520,{steps:10});
+  await expect(page.locator('.mh-hero')).toHaveAttribute('data-cursor-active','true');
+  await expect(page.locator('.mh-cursor-photo')).toHaveCSS('opacity','0.62');
+  assert.equal(await page.locator('.mh-cursor-photo img').evaluate(el=>el.currentSrc),await page.locator('.mh-poster img').evaluate(el=>el.currentSrc));
+  assert.ok(await signalField.evaluate(async el=>{
+    const canvas=el.querySelector('canvas');
+    const start=window.__heroDrawCounts.get(canvas);
+    await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+    return window.__heroDrawCounts.get(canvas)>start;
+  }),'Square cells animate on pointer movement');
+  await page.screenshot({path:'test-results/photo-hero/cursor-hover-1440.png'});
+  await page.locator('.mg-wordmark').hover();
+  await expect(page.locator('.mh-hero')).toHaveAttribute('data-cursor-active','false');
+  await expect(page.locator('.mh-cursor-photo')).toHaveCSS('opacity','0');
   await page.locator('.mg-history').scrollIntoViewIfNeeded();
+  await expect(signalField).toHaveAttribute('data-active','false');
+  assert.ok(await signalField.evaluate(async el=>{
+    await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+    const canvas=el.querySelector('canvas');
+    const start=window.__heroDrawCounts.get(canvas);
+    await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+    return window.__heroDrawCounts.get(canvas)===start;
+  }),'Square cells stop rendering offscreen');
   await expect(page.locator('#motion-firm-title')).toHaveAttribute('data-settled','false');
   await expect(page.locator('.mh-context-description')).toHaveAttribute('data-settled','false');
   await page.evaluate(()=>scrollTo({top:0,behavior:'instant'}));
   await held(page);
+  await expect(signalField).toHaveAttribute('data-active','true');
   await page.getByRole('link',{name:'Learn More',exact:true}).click();
   await expect(page.locator('header')).toHaveAttribute('data-scrolled','true');
   await expect(page.locator('.mg-nav-inner')).toHaveCSS('height','92px');
